@@ -5,16 +5,16 @@ import java.util.Map;
 
 /**
  * 通用  mapper接口<p>
- * 子类mapper接口可以继承该通用mapper接口，该接口将增删改查的通用方法抽取出来</p><p>
+ * 子类mapper接口可以继承该通用mapper接口，该接口将增删改查的通用方法抽取出来<p>
  * 相同的功能子接口通过继承获取通用的功能，service层通过反射将BaseMapper中的泛型
- * 替代成普通的pojo对象，在service层只需注入对应的子mapper即可</p>
+ * 替代成普通的pojo对象，在service层只需注入对应的子mapper即可
  * 子类mapper应遵循以下规范：<p>
  * <ul>
  *    <li> 子接口必须继承该BaseMapper</li>
  *    <li> 子接口必须以Mapper单词结尾</li>
  *    <li> 子接口禁止重写BaseMapper中有的通用方法 </li>
  *    <li> 子接口可以写自己特有的方法</li>
- * </ul></p>
+ * </ul>
  * 
  * @author mingshan
  *

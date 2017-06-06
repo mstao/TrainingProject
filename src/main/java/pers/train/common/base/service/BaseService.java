@@ -5,14 +5,14 @@ import java.util.Map;
 
 /**
  * 通用service接口<p>
- * 该通用service接口将通用的方法抽取出来，子service接口通过继承该BaseService接口获取其方法</p><p>
+ * 该通用service接口将通用的方法抽取出来，子service接口通过继承该BaseService接口获取其方法<p>
  * 
- * 子接口必须遵守以下规范</p>
+ * 子接口必须遵守以下规范
  * <ul>
  *    <li>子service接口必须继承该BaseService</li>
  *    <li>子service接口禁止重写BaseService有的方法</li>
  *    <li>子service接口可以写自己特有的方法</li>
- * <ul></p>
+ * <ul>
  * 
  * @author mingshan
  *
