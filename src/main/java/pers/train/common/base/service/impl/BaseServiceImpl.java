@@ -1,8 +1,9 @@
-package pers.train.admin.service.impl;
+package pers.train.common.base.service.impl;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -10,21 +11,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import pers.train.admin.dao.BaseMapper;
+
 import pers.train.admin.dao.SecurityUserMapper;
-import pers.train.admin.service.BaseService;
+import pers.train.common.base.dao.BaseMapper;
+import pers.train.common.base.service.BaseService;
+
 
 
 
 /**
- * 基类Service 用于动态获取泛型中的实体类信息
+ * 基类Service 用于动态获取泛型中的实体类信息<p>
+ * 该基类通过实现BaseService接口，然后在其实现方法中调用BaseMapper中的方法实现功能</p><p>
+ * 通过set注入将BaseMapper注入到该基类中</p><p>
+ * 在该基类的构造方法中通过反射获取该基类的泛型对应的实体类，即传入的pojo对象，由于Mybatis的机制，
+ * 根据相应的pojo,获取上下文中对应的mapper,然后将此pojo类名首字母小写，再与Mapper字符串拼接，
+ * 组成新的xxxMapper。子类必须继承该实现类。</p>
+ * 
  * @author mingshan
  *
  * @param <T>
  */
 public class BaseServiceImpl<T> implements BaseService<T>{
 
-	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	private static final Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 	
 	
 	@SuppressWarnings("rawtypes")
@@ -47,22 +56,25 @@ public class BaseServiceImpl<T> implements BaseService<T>{
      }
      
  	@PostConstruct
-	public void init() throws Exception
-	{
+	public void init() throws Exception{
 		
 		// 根据相应的clazz,获取上下文中对应的mapper
 		// 1: 获取相应的类名称
-		String clazzName = clazz.getSimpleName();
-	
-		// 2:securityUser  -> securityUserMapper
+		String clazzName = clazz.getSimpleName();	    
+
+		System.out.println("clazzName = " + clazzName);
+		// 2:SecurityUser -> securityUser  -> securityUserMapper
 		String clazzDaoName = clazzName.substring(0,1).toLowerCase() + clazzName.substring(1) + "Mapper";//toLowerCase首字母小写
-		
+
+		System.out.println("clazzDaoName = " + clazzDaoName);
 		// 3: 通过clazzDaoName获取相应 Field字段    this.getClass().getSuperclass():获取到相应BaseServiceImpl
-		Field daoNameField = this.getClass().getSuperclass().getDeclaredField(clazzDaoName);
-		
-		Object object = daoNameField.get(this);
-	
-		// 4: 获取baseDao 的字段信息
+		Field daoNameField = this.getClass().getSuperclass().getDeclaredField(clazzDaoName);		
+	    System.out.println("this.getClass().getSuperclass() = "+this.getClass().getSuperclass());
+		System.out.println("daoNameField = " + daoNameField);
+		Object object = daoNameField.get(this);		
+
+		System.out.println("object = " + object);
+		// 4: 获取baseMapper 的字段信息
 		Field baseDaoNameField = this.getClass().getSuperclass().getDeclaredField("baseMapper");
 		baseDaoNameField.set(this, object);
 		
@@ -99,7 +111,7 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	}
 
 	@Override
-	public int del(Integer id) {
+	public int delete(Integer id) {
 		// TODO Auto-generated method stub
 		return baseMapper.deleteByPrimaryKey(id);
 	}
@@ -108,6 +120,12 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	public T selectByUniqueFiled(T t) {
 		// TODO Auto-generated method stub
 		return baseMapper.selectByUniqueFiled(t);
+	}
+
+	@Override
+	public List<T> findByPage(Map map) {
+		// TODO Auto-generated method stub
+		return baseMapper.findByPage(map);
 	}
 
 }
