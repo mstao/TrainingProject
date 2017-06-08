@@ -25,8 +25,13 @@ import pers.train.common.base.service.BaseService;
  * 通过set注入将BaseMapper注入到该基类中<p>
  * 在该基类的构造方法中通过反射获取该基类的泛型对应的实体类，即传入的pojo对象，由于Mybatis的机制，
  * 根据相应的pojo,获取上下文中对应的mapper,然后将此pojo类名首字母小写，再与Mapper字符串拼接，
- * 组成新的xxxMapper。子类必须继承该实现类。
+ * 组成新的xxxMapper。子类必须继承该实现类。<p>
  * 
+ * 该类需要注意：
+ * <ul>
+ *    <li>在该基类中，必须注入所有要用到的mapper接口，否则报错</li>
+ *    <li>其他内容不可乱动</li>
+ * </ul>
  * @author mingshan
  *
  * @param <T>
