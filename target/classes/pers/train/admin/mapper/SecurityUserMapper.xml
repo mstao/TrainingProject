@@ -25,7 +25,7 @@
 <resultMap type="pers.train.admin.po.SecurityUser" id="userPermissionResultMap">
 	<id column="id" property="id"/>
 
-	<collection property="permission" ofType="pers.student.admin.po.SecurityPermission">
+	<collection property="permission" ofType="pers.train.admin.po.SecurityPermission">
 		<id column="id" property="id"/>
 		<result column="permission_name" property="permissionName"/>
 	</collection>
