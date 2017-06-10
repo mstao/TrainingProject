@@ -15,15 +15,15 @@ import pers.train.admin.po.SecurityUser;
 import pers.train.admin.service.UserService;
 
 
-/**
- * 
-* @ClassName: MyRealm
-* @Description: TODO 权限认证
-* @author Mingshan
-* @date 2017年4月18日 下午6:46:29
-*
- */
 
+/**
+ * 权限认证和权限分配<p>
+ * doGetAuthorizationInfo 这个方法用户为登录成功的用户授予角色和权限
+ * doGetAuthenticationInfo 这个方法验证当前的用户的登录名和密码是否合法
+ * 密码采用MD5加密，盐值为当前用户的用户名
+ * @author mingshan
+ *
+ */
 public class MyRealm extends AuthorizingRealm{
 	
 	@Autowired
