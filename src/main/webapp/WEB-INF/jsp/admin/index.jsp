@@ -50,7 +50,7 @@
                 <!-- logo -->
               
               <div class="admin-login-box">
-						 <a href="/" style="color: #c2c2c2; font-size: 18px; line-height: 60px;">后台管理系统</a>
+						 <a href="javascript:void(0);" style="color: #c2c2c2; font-size: 18px; line-height: 60px;">后台管理系统</a>
 						<div class="admin-side-toggle">
 							<i class="fa fa-bars" aria-hidden="true"></i>
 						</div>
@@ -67,6 +67,11 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;">
                          	   进入前台
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                         	   ${sessionScope.role}
                         </a>
                     </li>
                     <li class="layui-nav-item">
@@ -110,17 +115,17 @@
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" data-url="https://www.baidu.com/" data-id="2">
+                                <a href="javascript:;" data-url="${CTP}/admin/authority/roleList" data-id="2">
                                	   角色列表
                                 </a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" data-url="http://cn.bing.com/" data-id="3">
+                                <a href="javascript:;" data-url="${CTP}/admin/authority/allocation?p=1" data-id="3">
                            	             角色分配
                                 </a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" data-url="https://www.so.com/" data-id="4">
+                                <a href="javascript:;" data-url="${CTP}/admin/authority/resources" data-id="4">
                                	  权限列表
                                 </a>
                             </dd>
@@ -228,7 +233,7 @@
                         tabindex = iframe.attr('data-tabindex');
                     }else{ //不存在 iframe
                         //显示加载层
-                        layer.load(2);
+                        layer.load(1,{offset: 10,time:2000});
                         setTimeout(function() {
                             layer.closeAll('loading');
                         }, 300);

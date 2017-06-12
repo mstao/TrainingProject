@@ -55,5 +55,19 @@ select * from ps_security_role where role_name LIKE '%${value}%' OR role_code LI
    </where>
 </delete>
 
+<!-- 更新 -->
+<update id="updateByPrimaryKeySelective" parameterType="pers.train.admin.po.SecurityRole">
+	update ps_security_role 
+	<set>
+	     <if test="roleName != null and roleName !=''">
+	    	 role_name=#{roleName},
+	     </if>
+	     <if test="roleCode != null and roleCode !=''">
+	    	 role_code=#{roleCode}
+	     </if>
+	</set>
+    where id=#{id}
+     
+</update>
 
 </mapper>

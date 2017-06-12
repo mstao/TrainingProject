@@ -1,0 +1,137 @@
+
+
+.dx-list-default {
+	padding: 0 25px
+}
+
+.dx-list-default .layui-table thead {
+	border: solid 1px #a5abb7;
+	border-bottom: 0
+}
+
+.dx-list-default .layui-table th {
+	padding: 0;
+	line-height: 30px;
+	background-color: #a5abb7;
+	color: #fff;
+	font-weight: 100;
+	text-align: center;
+	border: 0
+}
+
+.dx-list-default .layui-table td {
+	line-height: 50px;
+	padding: 0;
+	font-size: 14px;
+	color: #666;
+	text-align: center
+}
+
+.dx-list-default .layui-table td {
+	border: 0;
+	border-right: solid 1px #eaeaea
+}
+
+.dx-list-default .layui-table tr td:last-child {
+	border-right: 0
+}
+
+.dx-list-default .layui-table tbody tr:nth-child(2n) {
+	background-color: #f0f2f5
+}
+
+.dx-list-default .layui-table tbody {
+	border: solid 1px #ccc;
+	border-top: 0
+}
+
+.dx-list-default .table-operation-box {
+	width: 280px
+}
+
+.dx-list-default .table-operation-box .layui-icon,
+.dx-list-default .table-operation i.icon-chakan {
+	font-size: 20px
+}
+
+.dx-list-default .table-operation {
+	cursor: pointer;
+	display: inline-block;
+	width: 80px;
+	text-align: center;
+	color: #62a6e1;
+	vertical-align: middle;
+	position: relative
+}
+
+.dx-list-default .table-operation:before {
+	content: '';
+	position: absolute;
+	width: 1px;
+	height: 16px;
+	background-color: rgba(99, 166, 225, .3);
+	right: 0;
+	top: 50%;
+	margin-top: -8px
+}
+
+.dx-list-default .table-operation i {
+	font-size: 16px
+}
+
+
+
+.layui-form-pane.dx-form-pane .layui-form-label {
+	border-color: #6a96df;
+	background-color: #6a96df;
+	width: auto;
+	color: #fff
+}
+
+.layui-form-radio i:hover,
+.layui-form-radioed i {
+	color: #6a96df
+}
+
+.dx-operation-bar {
+	padding: 17px 45px;
+	background-color: #fff;
+	border: solid 1px #e5e5e5;
+	border-top: 0
+}
+
+.dx-operation-bar .layui-form-item {
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: 0;
+	margin-right: 10px
+}
+
+.dx-operation-bar .layui-input-block {
+	margin-left: 0
+}
+
+.dx-operation-bar .item-right {
+	float: right;
+	margin-right: 0
+}
+
+.dx-operation-bar .layui-form {
+	display: inline-block
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	background-color: #fff
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #fff
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #bbb
+}

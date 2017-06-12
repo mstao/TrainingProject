@@ -197,6 +197,27 @@ public class AuthorityController{
 	}
 	
 	/**
+	 * 修改角色
+	 * @param role
+	 * @return
+	 */
+	@RequestMapping("updateRole")
+	@ResponseBody
+	public String updateRole(SecurityRole role){
+		int r;
+		
+		//更新数据
+		int result = roleService.update(role);
+		if(result>0){
+			r = 1;
+		}else{
+			r = 0;
+		}		
+		
+		return r + "";
+	}
+	
+	/**
 	 * 修改用户角色
 	 * @param userToRole
 	 * @return

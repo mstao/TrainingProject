@@ -9,9 +9,7 @@ public class CrypographyUtil {
 
 	
 	public static void main(String[] args){
-		/*System.out.println(MD5("java123","123456"));
-		System.out.println(MD5("jack","123456"));
-		System.out.println(MD5("marry","123456"));*/
+		
 	}
 	
 	/**

@@ -1,8 +1,8 @@
 
 $(function(){
 	//全选和取消全选
-	$('.new_div2_input').click(function(){
-	  var is_check=$('.new_div2_input').is(':checked');
+	$('.checked_input').click(function(){
+	  var is_check=$('.checked_input').is(':checked');
 	  var info_check=document.getElementsByName('info_id');
 	  if(is_check==true){
 
@@ -61,3 +61,4 @@ function hms(){
 	var hms=hh+":"+mm+":"+ss;
 	return hms;
 }
+
