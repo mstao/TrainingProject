@@ -30,16 +30,16 @@ public interface BaseService<T> {
 	List<T> findByPage(Map map);
 	
 	//插入
-	int insert(T model);
+	int insert(T t);
 	
 	//插入 不会忽略default
-	int insertSelective(T model);
+	int insertSelective(T t);
 	
 	//根据其他唯一字段查询,传入为pojo，便于简化sql
 	T selectByUniqueFiled(T t);
 	
 	//更新信息
-	int update(T model);
+	int update(T t);
 	
 	//删除信息
 	int delete(Integer id);	

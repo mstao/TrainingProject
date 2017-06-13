@@ -25,10 +25,10 @@ public interface BaseMapper<T> {
 	int deleteByPrimaryKey(Integer id);
 
 	//插入
-	int insert(T model);
+	int insert(T t);
 
 	//插入 不会忽略default
-	int insertSelective(T model);
+	int insertSelective(T t);
     
 	//根据主键查询
 	T selectByPrimaryKey(Integer id);
@@ -37,7 +37,7 @@ public interface BaseMapper<T> {
 	T selectByUniqueFiled(T t);
 	
 	//更新
-	int updateByPrimaryKeySelective(T model);
+	int updateByPrimaryKeySelective(T t);
 	
     //查询全部
 	List<T> selectAll();

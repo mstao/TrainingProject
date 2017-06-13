@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>发布内容界面</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 <link rel="stylesheet" href="${CTP}/resources/common/js/extends/layui/css/layui.css">

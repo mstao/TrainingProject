@@ -70,8 +70,8 @@ var DEFAULT_USERNAME = "<shiro:principal/>";
 				</td>
 				<td>${user_list.roleName}</td>
 				<td class="table-operation-box">
-				 <span class="table-operation user-update only-delete" dx-type="update"><i class="layui-icon">&#xe640;</i></span> 
-				 <span class="table-operation user-update only-select" dx-type="update"><i class="layui-icon">&#xe620;</i></span>
+				 <span class="table-operation user-update only-delete" dx-type="update" title="删除"><i class="layui-icon">&#xe640;</i></span> 
+				 <span class="table-operation user-update only-select" dx-type="update" title="分配角色"><i class="layui-icon">&#xe620;</i></span>
 				
 				 </td>
 			</tr>
@@ -226,8 +226,8 @@ layui.use(['layer','element','form'], function() {
 			        			}
 			        			xhtml+="<td>"+item.roleName+"</td>";
 			        			xhtml+="<td class='table-operation-box'>"
-									 +"<span class='table-operation user-update only-delete' dx-type='update'><i class='layui-icon'>&#xe640;</i></span>"
-									 +"<span class='table-operation user-update only-select' dx-type='update'><i class='layui-icon'>&#xe620;</i></span>"									
+									 +"<span class='table-operation user-update only-delete' dx-type='update' title='删除'><i class='layui-icon'>&#xe640;</i></span>"
+									 +"<span class='table-operation user-update only-select' dx-type='update' title='分配角色'><i class='layui-icon'>&#xe620;</i></span>"									
 									 +"</td>";
 			        			xhtml+="</tr>";
 			        		}); 

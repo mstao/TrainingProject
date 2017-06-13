@@ -106,7 +106,10 @@ background:#0088CC;
 				<td data-id="${role_list.id}"> <input type="checkbox" name="info_id" value="${role_list.id}"></td>
 				<td>${role_list.roleName}</td>
 				<td>${role_list.roleCode}</td>
-				<td class="table-operation-box"> <span class="table-operation update-role-btn" ><i class="layui-icon">&#xe642;</i>   </span> <span class="table-operation user-update only-delete" dx-type="update"><i class="layui-icon">&#xe640;</i></span>  </td>
+				<td class="table-operation-box"> 
+				 <span class="table-operation update-role-btn" title="编辑"><i class="layui-icon">&#xe642;</i>   </span>
+				 <span class="table-operation user-update only-delete" dx-type="update" title="删除"><i class="layui-icon">&#xe640;</i></span> 
+			    </td>
 			</tr>
 		</c:forEach>
 			
