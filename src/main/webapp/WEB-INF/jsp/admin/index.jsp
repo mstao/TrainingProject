@@ -13,7 +13,7 @@
     
     <link rel="stylesheet" href="${CTP}/resources/common/js/extends/layui/css/layui.css">
     <link rel="stylesheet" href="${CTP}/resources/common/js/extends/font-awesome/css/font-awesome.min.css">
-    <style type="text/css">
+   <style type="text/css">
     	
     	
 .admin-side-toggle,.admin-side-full{
@@ -144,7 +144,7 @@
                                 </a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" data-url="http://cn.bing.com/" data-id="6">
+                                <a href="javascript:;" data-url="${CTP}/admin/content/write" data-id="6">
                              	       发布内容
                                 </a>
                             </dd>

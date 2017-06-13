@@ -1,0 +1,25 @@
+.dx-list-default {
+	padding: 0 25px;
+	width:910px;
+}
+
+.editor-div{
+   position: relative;
+   left:110px;
+   margin-bottom:20px;
+}
+.editor-div label{
+	position: relative;
+	left:-43px;
+	top:15px;
+	
+}
+/**编辑器**/
+#editor-container{
+	width:800px;
+	margin-top:0px;
+	
+}
+#editor-trigger{
+	height:300px;	
+}

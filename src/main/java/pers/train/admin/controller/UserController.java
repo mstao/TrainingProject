@@ -2,7 +2,6 @@ package pers.train.admin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,17 +44,7 @@ public class UserController {
 	@Autowired
 	private UserToRoleService userToRoleService;
 	
-	
-/*	@RequestMapping("/index")
-	public String index(ModelMap map){
-		
-		List<SecurityUser> list = userService.findAll();
-		
-		map.put("list", list);
-		
-		return "list";
-	}*/
-	
+
 	/**
 	 * 显示登录注册界面
 	 * @return
