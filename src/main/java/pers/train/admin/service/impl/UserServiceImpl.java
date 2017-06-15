@@ -12,23 +12,26 @@ import org.springframework.stereotype.Service;
 import pers.train.admin.dao.SecurityUserMapper;
 import pers.train.admin.po.SecurityPermission;
 import pers.train.admin.po.SecurityUser;
+import pers.train.admin.service.ArticleService;
 import pers.train.admin.service.UserService;
 import pers.train.common.base.service.impl.BaseServiceImpl;
 
 /**
- * 用户service
+ * 用户service,继承了{@link BaseServiceImpl}基类,
+ * 实现了{@link UserService}接口
  * @author mingshan
  *
  */
 @Service
-public class UserServiceImpl extends BaseServiceImpl<SecurityUser> implements UserService{
+@SuppressWarnings("rawtypes") 
+public class UserServiceImpl extends BaseServiceImpl<SecurityUser> implements UserService {
 
 	@Autowired
  	private SecurityUserMapper securityUserMapper;
 	
 	@Override
 	public Set<String> getRoles(String userName) {
-		// TODO Auto-generated method stub
+
 		Set<String>  roles = new HashSet<String>();
 		String roleCode = securityUserMapper.selectUserRole(userName);
 		roles.add(roleCode);
@@ -37,7 +40,7 @@ public class UserServiceImpl extends BaseServiceImpl<SecurityUser> implements Us
 
 	@Override
 	public Set<String> getPermissions(String userName) {
-		// TODO Auto-generated method stub
+
 		Set<String>  permissions = new HashSet<String>();
 		SecurityUser user = securityUserMapper.selectUserPersmission(userName);
 		if(user!=null){
@@ -53,47 +56,32 @@ public class UserServiceImpl extends BaseServiceImpl<SecurityUser> implements Us
 
 	@Override
 	public List<SecurityUser> selectUserByToken(String username) {
-		// TODO Auto-generated method stub
+
 		List<SecurityUser> list = securityUserMapper.selectUserByToken(username);
 		return list;
 	}
 
 	@Override
-	public List<SecurityUser> selectStudent(Map map) {
-		// TODO Auto-generated method stub
-		
-		List<SecurityUser> list = securityUserMapper.selectStudent(map);
-		return list;
-	}
-
-	@Override
-	public int findStudentCount() {
-		// TODO Auto-generated method stub
-		
-		return securityUserMapper.findStudentCount();
-	}
-
-	@Override
 	public int findUserCount() {
-		// TODO Auto-generated method stub
+
 		return securityUserMapper.findUserCount();
 	}
 
 	@Override
 	public List<SecurityUser> selectUserList(Map map) {
-		// TODO Auto-generated method stub
+
 		return securityUserMapper.selectUserList(map);
 	}
 
 	@Override
 	public int deleteBatch(SecurityUser securityUser) {
-		// TODO Auto-generated method stub
+
 		return securityUserMapper.deleteBatch(securityUser);
 	}
 
 	@Override
 	public List<SecurityUser> selectAllUserByToken(String token) {
-		// TODO Auto-generated method stub
+
 		return securityUserMapper.selectAllUserByToken(token);
 	}
 

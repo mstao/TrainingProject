@@ -14,6 +14,6 @@ import pers.train.common.base.service.impl.BaseServiceImpl;
  *
  */
 @Service
-public class ResourcesServiceImpl extends BaseServiceImpl<SecurityResources> implements ResourcesService{
+public class ResourcesServiceImpl extends BaseServiceImpl<SecurityResources> implements ResourcesService {
 
 }

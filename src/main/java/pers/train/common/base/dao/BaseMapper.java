@@ -7,7 +7,8 @@ import java.util.Map;
  * 通用  mapper接口<p>
  * 子类mapper接口可以继承该通用mapper接口，该接口将增删改查的通用方法抽取出来<p>
  * 相同的功能子接口通过继承获取通用的功能，service层通过反射将BaseMapper中的泛型
- * 替代成普通的pojo对象，在service层只需注入对应的子mapper即可
+ * 替代成普通的pojo对象，在service层只需注入对应的子mapper即可<p>
+ * 在xxxMapper.xml中，基本的增删改查的id需与该接口的方法名相同<p>
  * 子类mapper应遵循以下规范：<p>
  * <ul>
  *    <li> 子接口必须继承该BaseMapper</li>
@@ -19,6 +20,7 @@ import java.util.Map;
  * @author mingshan
  *
  */
+@SuppressWarnings("rawtypes") 
 public interface BaseMapper<T> {
 	
 	//根据主键删除

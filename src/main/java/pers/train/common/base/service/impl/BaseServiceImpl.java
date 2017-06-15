@@ -11,6 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import pers.train.admin.dao.ArticleMapper;
+import pers.train.admin.dao.ArticleTypeMapper;
+import pers.train.admin.dao.FriendLinkMapper;
 import pers.train.admin.dao.SecurityResourcesMapper;
 import pers.train.admin.dao.SecurityRoleMapper;
 import pers.train.admin.dao.SecurityUserMapper;
@@ -38,21 +41,19 @@ import pers.train.common.base.service.BaseService;
  *
  * @param <T>
  */
+@SuppressWarnings({"unused","rawtypes"})
 public class BaseServiceImpl<T> implements BaseService<T>{
 
 	private static final Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 	
-	
-	@SuppressWarnings("rawtypes")
 	private Class clazz=null;
 	
-    
     private BaseMapper<T> baseMapper;
  	public void setBaseMapper(BaseMapper<T> baseMapper) {
  		this.baseMapper = baseMapper;
  	}
 	
- 	@Autowired
+	@Autowired
  	private SecurityUserMapper securityUserMapper;
  	
  	@Autowired
@@ -64,31 +65,44 @@ public class BaseServiceImpl<T> implements BaseService<T>{
  	@Autowired 
  	private SecurityUserToRoleMapper securityUserToRoleMapper;
  	
-    public  BaseServiceImpl(){
+ 	@Autowired
+ 	private ArticleMapper articleMapper;
+ 	
+ 	@Autowired
+ 	private ArticleTypeMapper articleTypeMapper;
+ 	
+ 	@Autowired
+ 	private FriendLinkMapper friendLinkMapper;
+ 	
+ 	
+    public  BaseServiceImpl() {
     	 //通过反射机制获取子类传递过来的实体类型信息
     	 ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
     	 clazz = (Class) type.getActualTypeArguments()[0];
-     }
+    }
      
  	@PostConstruct
-	public void init() throws Exception{
+	public void init() throws Exception {
 		
 		// 根据相应的clazz,获取上下文中对应的mapper
 		// 1: 获取相应的类名称
 		String clazzName = clazz.getSimpleName();	    
-
-		System.out.println("clazzName = " + clazzName);
+		logger.info("Training---clazzName = " + clazzName);
+		
 		// 2:SecurityUser -> securityUser  -> securityUserMapper
 		String clazzDaoName = clazzName.substring(0,1).toLowerCase() + clazzName.substring(1) + "Mapper";//toLowerCase首字母小写
-
-		System.out.println("clazzDaoName = " + clazzDaoName);
+		logger.info("Training---clazzDaoName = " + clazzDaoName);
+		
 		// 3: 通过clazzDaoName获取相应 Field字段    this.getClass().getSuperclass():获取到相应BaseServiceImpl
 		Field daoNameField = this.getClass().getSuperclass().getDeclaredField(clazzDaoName);		
-	    System.out.println("this.getClass().getSuperclass() = "+this.getClass().getSuperclass());
-		System.out.println("daoNameField = " + daoNameField);
+		logger.info("Training---this.getClass().getSuperclass() = "+this.getClass().getSuperclass());
+		
+		System.out.println("Training---this.getClass().getSuperclass() = "+this.getClass().getSuperclass());
+		logger.info("Training---daoNameField = " + daoNameField);
+		
 		Object object = daoNameField.get(this);		
-
-		System.out.println("object = " + object);
+		logger.info("Training---object = " + object);
+		
 		// 4: 获取baseMapper 的字段信息
 		Field baseDaoNameField = this.getClass().getSuperclass().getDeclaredField("baseMapper");
 		baseDaoNameField.set(this, object);

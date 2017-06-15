@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="pers.train.admin.dao.ArticleTypeMapper">
+
+<!-- 定义sql片段 -->
+<sql id="query_type_where">
+ 
+	<if test="ids !=null and ids!='' ">
+		<!-- foreach  遍历集合  拼接sql  id in(1,2) -->
+         <foreach collection="ids" item="item" open="id in(" close=")" separator="," >        
+         	#{item}
+         </foreach> 
+	</if>
+	 
+</sql>
+
+<!-- 定义resultMap -->
+<resultMap type="pers.train.admin.po.ArticleType" id="typeResultMap">
+
+	<id property="id" column="id"/>
+	<result property="itemType" column="item_type"/>
+	<result property="itemFlag" column="item_flag"/>
+	
+</resultMap>
+
+<!-- 查询全部栏目 -->
+<select id="selectAll" resultMap="typeResultMap">
+	select id,item_type,item_flag from ps_article_type
+</select>
+
+<!-- 模糊查询栏目 -->
+<select id="selectByToken" parameterType="java.lang.String" resultMap="typeResultMap">
+	select id,item_type,item_flag from ps_article_type where item_type LIKE '%${value}%' OR item_flag LIKE '%${value}%'
+</select>
+
+<!-- 修改栏目名称 -->
+<update id="updateByPrimaryKeySelective" parameterType="pers.train.admin.po.ArticleType">
+	update ps_article_type 
+	<set>
+	   <if test="itemType !=null and itemType !=''">
+	    	item_type=#{itemType},
+	   </if>
+	   <if test="itemFlag !=null and itemFlag !=''">
+	   		item_flag=#{itemFlag}
+	   </if>
+	</set>
+	where id=#{id}
+	
+</update>
+
+<!-- 新增栏目 -->
+<insert id="insert" parameterType="pers.train.admin.po.ArticleType">
+   <!-- 主键值返回 -->
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+	insert into ps_article_type(item_type,item_flag) 
+	values (#{itemType}, #{itemFlag})
+</insert>
+
+<!-- 删除栏目 ->批量删除 -->
+<delete id="deleteBatch" parameterType="pers.train.admin.po.ArticleType"> 
+	delete from ps_article_type
+	<where>
+		<include refid="query_type_where"></include>
+	</where>
+	
+</delete>
+
+<!-- 单项删除 -->
+<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+	delete from ps_article_type where id=#{id}
+</delete>
+
+</mapper>

@@ -18,6 +18,7 @@ import java.util.Map;
  *
  * @param <T>
  */
+@SuppressWarnings("rawtypes")
 public interface BaseService<T> {
 	
 	//通过id查询信息，返回实体类

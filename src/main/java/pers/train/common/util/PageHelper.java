@@ -2,8 +2,6 @@ package pers.train.common.util;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 
 
 /** 

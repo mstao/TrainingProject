@@ -18,20 +18,20 @@ import pers.train.common.base.service.impl.BaseServiceImpl;
  *
  */
 @Service
-public class RoleServiceImpl extends BaseServiceImpl<SecurityRole> implements RoleService{
+public class RoleServiceImpl extends BaseServiceImpl<SecurityRole> implements RoleService {
 
 	@Autowired
 	private SecurityRoleMapper securityRoleMapper;
 
 	@Override
 	public int deleteBatch(SecurityRole securityRole) {
-		// TODO Auto-generated method stub
+
 		return securityRoleMapper.deleteBatch(securityRole);
 	}
 
 	@Override
 	public List<SecurityRole> selectRoleByToken(String token) {
-		// TODO Auto-generated method stub
+	
 		return securityRoleMapper.selectRoleByToken(token);
 	}
 

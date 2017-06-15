@@ -1,7 +1,6 @@
 package pers.train.common.util;
 
 import org.apache.shiro.codec.Base64;
-import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 

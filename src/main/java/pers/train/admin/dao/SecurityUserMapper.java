@@ -14,6 +14,7 @@ import pers.train.common.base.dao.BaseMapper;
  * @author mingshan
  *
  */
+@SuppressWarnings("rawtypes")
 public interface SecurityUserMapper extends BaseMapper<SecurityUser>{
 	//根据用户名查找角色
 	String selectUserRole(String username);
@@ -23,12 +24,7 @@ public interface SecurityUserMapper extends BaseMapper<SecurityUser>{
 	
 	//模糊查询用户
 	List<SecurityUser> selectUserByToken(String username);
-	
-	//查询所有的学生 -分页
-	List<SecurityUser> selectStudent(Map map);
-	
-	//查询所有的学生 数量   -分页
-	int findStudentCount();
+		
 	
 	//查询所有用户 -数量
 	int findUserCount();

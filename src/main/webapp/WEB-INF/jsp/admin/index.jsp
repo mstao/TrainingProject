@@ -151,6 +151,22 @@
                             
                         </dl>
                     </li>
+                    <!-- 栏目管理 -->
+                    
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                                                                                 栏目管理
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" data-url="https://www.baidu.com/" data-id="5">
+                                                                                                       栏目列表
+                                </a>
+                            </dd>
+                          
+                            
+                        </dl>
+                    </li>
                     
                      <li class="layui-nav-item">
                         <a href="javascript:;">

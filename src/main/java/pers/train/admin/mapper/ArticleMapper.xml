@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="pers.train.admin.dao.ArticleMapper">
+
+<!-- 定义resultMap -->
+<resultMap type="pers.train.admin.po.Article" id="articleResultMap">
+	<id column="id" property="id"/>
+	<result column="item_title" property="itemTitle"/>
+	<result column="item_content" property="itemContent"/>
+	<result column="type_id" property="typeId"/>
+	<result column="add_time" property="addTime"/>
+	<result column="view_count" property="viewCount"/>
+	<result column="author" property="author"/>
+	<result column="is_publish" property="isPublish"/>
+	
+	<!-- 文章对应 栏目信息 -->
+	<association property="articleType" javaType="pers.train.admin.po.ArticleType">
+		<id column="at_id" property="id"/>
+		<result property="itemType" column="item_type"/>
+		<result property="itemFlag" column="item_flag"/>
+	</association>
+		
+</resultMap>
+
+<!-- 定义sql片段 -->
+<sql id="query_article_where">
+    
+    <!-- 用于批量删除 -->
+	<if test="ids !=null and ids!='' ">
+		<!-- foreach  遍历集合  拼接sql  id in(1,2) -->
+         <foreach collection="ids" item="item" open="id in(" close=")" separator="," >        
+         	#{item}
+         </foreach> 
+	</if>
+	
+</sql>
+
+<!-- 根据条件查询文章信息  ，用到分页 -->
+<select id="selectUserList" parameterType="java.util.Map" resultMap="articleResultMap">
+	select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
+	 from ps_article pa,ps_article_type pat 
+	<!-- 判断是否用到分页查询 ,即根据 position 和 pageSize 的有无来判断-->
+	<if test="position !=null and position !=''">
+	    <if test="pageSize !=null and pageSize!=''">
+	       limit #{position},#{pageSize}
+	    </if>
+	</if>
+	
+</select>
+
+<!-- 根据 type id 查询文章 -->
+<select id="selectArticleByTypeId" parameterType="java.lang.Integer" resultMap="articleResultMap">
+	select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
+	 from ps_article pa,ps_article_type pat where pa.type_id=#{value}
+	
+</select>
+
+<!--批量 删除文章 -->
+<delete id="deleteBatch" parameterType="pers.train.admin.po.Article">
+	delete from ps_article 
+	<where>
+	   <include refid="query_article_where"></include>
+	</where>
+</delete>
+
+<!-- 单项删除 -->
+<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ps_article where id=#{id}
+</delete>
+
+<!-- 修改文章 -->
+<update id="updateByPrimaryKeySelective" parameterType="pers.train.admin.po.Article">
+	update ps_article 
+	<set>
+		<if test="itemTitle !=null and itemTitle !=''">
+			item_title=#{itemTitle},
+	    </if>
+	    <if test="itemContent !=null and itemContent !=''">
+	    	item_content=#{itemContent},
+	    </if>
+	    <if test="typeId !=null and typeId !=0">
+	    	type_id=#{typeId},
+	    </if>
+	    <if test="addTime !=null and add_time !=''">
+	    	add_time=#{addTime},
+	    </if>
+	    <if test="isPublish !=null and isPublish !=''">
+	    	is_publish=#{isPublish}
+	    </if>
+	</set> 
+	
+</update>
+
+<!-- 添加文章 -->
+<insert id="insert" parameterType="pers.train.admin.po.Article">
+	insert into ps_article(item_title,item_content,type_id,add_time,author,is_publish)
+	values (#{itemTitle},#{itemContent},#{typeId},#{addTime},#{author},#{isPublish})
+	
+</insert>
+
+</mapper>
