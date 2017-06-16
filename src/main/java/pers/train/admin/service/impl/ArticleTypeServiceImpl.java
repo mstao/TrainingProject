@@ -3,6 +3,7 @@ package pers.train.admin.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import pers.train.admin.dao.ArticleTypeMapper;
 import pers.train.admin.po.ArticleType;
@@ -15,6 +16,7 @@ import pers.train.common.base.service.impl.BaseServiceImpl;
  * @author mingshan
  *
  */
+@Service
 public class ArticleTypeServiceImpl extends BaseServiceImpl<ArticleType> implements ArticleTypeService {
 
 	@Autowired

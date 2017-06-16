@@ -7,8 +7,8 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import pers.train.admin.dao.ArticleMapper;
@@ -25,7 +25,7 @@ import pers.train.common.base.service.BaseService;
 
 
 /**
- * 基类Service 用于动态获取泛型中的实体类信息<p>
+ * 基类Service 用于动态获取泛型中的实体类信息，实现了{@link BaseService}接口<p>
  * 该基类通过实现BaseService接口，然后在其实现方法中调用BaseMapper中的方法实现功能<p>
  * 通过set注入将BaseMapper注入到该基类中<p>
  * 在该基类的构造方法中通过反射获取该基类的泛型对应的实体类，即传入的pojo对象，由于Mybatis的机制，
@@ -44,7 +44,7 @@ import pers.train.common.base.service.BaseService;
 @SuppressWarnings({"unused","rawtypes"})
 public class BaseServiceImpl<T> implements BaseService<T>{
 
-	private static final Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
+	protected final Log logger = LogFactory.getLog(getClass());
 	
 	private Class clazz=null;
 	
@@ -111,49 +111,49 @@ public class BaseServiceImpl<T> implements BaseService<T>{
      
 	@Override
 	public T findById(int id) {
-		// TODO Auto-generated method stub
+
 		return baseMapper.selectByPrimaryKey(id);
 	}
 
 	@Override
 	public List<T> findAll() {
-		// TODO Auto-generated method stub
+
 		return baseMapper.selectAll();
 	}
 
 	@Override
-	public int insert(T model) {
-		// TODO Auto-generated method stub
-		return baseMapper.insert(model);
+	public int insert(T t) {
+
+		return baseMapper.insert(t);
 	}
 
 	@Override
-	public int insertSelective(T model) {
-		// TODO Auto-generated method stub
-		return baseMapper.insertSelective(model);
+	public int insertSelective(T t) {
+
+		return baseMapper.insertSelective(t);
 	}
 
 	@Override
-	public int update(T model) {
-		// TODO Auto-generated method stub
-		return baseMapper.updateByPrimaryKeySelective(model);
+	public int update(T t) {
+
+		return baseMapper.updateByPrimaryKeySelective(t);
 	}
 
 	@Override
 	public int delete(Integer id) {
-		// TODO Auto-generated method stub
+
 		return baseMapper.deleteByPrimaryKey(id);
 	}
 
 	@Override
 	public T selectByUniqueFiled(T t) {
-		// TODO Auto-generated method stub
+
 		return baseMapper.selectByUniqueFiled(t);
 	}
 
 	@Override
 	public List<T> findByPage(Map map) {
-		// TODO Auto-generated method stub
+
 		return baseMapper.findByPage(map);
 	}
 

@@ -20,6 +20,7 @@ var DEFAULT_USERNAME = "<shiro:principal/>";
 </script>
 </head>
 <body>
+
 <section class="dx-list-default">
 	
 <br><br>	
@@ -33,9 +34,28 @@ var DEFAULT_USERNAME = "<shiro:principal/>";
   <div class="layui-form-item">
     <label class="layui-form-label">标题</label>
     <div class="layui-input-block">
-      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input title">
     </div>
   
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">作者</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" required  lay-verify="required" placeholder="请输入作者名" autocomplete="off" class="layui-input author">
+    </div>
+  
+  </div>
+  
+<div class="layui-form-item">
+    <label class="layui-form-label">栏目名</label>
+    <div class="layui-input-block">
+      <select name="interest" lay-filter="aihao" class="select-category">
+      <c:forEach items="${typeList}" var="list">
+        <option value="${list.id}">${list.itemType}</option>
+      </c:forEach>
+      </select>
+    </div>
   </div>
 
 <div class="editor-div">
@@ -47,13 +67,14 @@ var DEFAULT_USERNAME = "<shiro:principal/>";
 
 </div>
 
-<div class="layui-input-block">
-  <button class="layui-btn" lay-submit="" lay-filter="zzz">立即提交</button>
-  <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-</div>
 
 
 </form>
+
+<div class="layui-input-block">
+  <button class="layui-btn publish-btn" lay-submit lay-filter="zzz">立即提交</button>
+  <button class="layui-btn layui-btn-primary draft-btn">保存草稿</button>
+</div>
 
 
 
@@ -122,12 +143,105 @@ layui.use(['layer','element','form','flow'], function() {
   //创建编辑器
   editor.create();
     
-  //监听提交
-  form.on('submit(zzz)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    return false;
+  //发布
+  $(".publish-btn").bind("click",function(){
+	 var title = $(".title").val();
+	 var category_id = $(".select-category").val();
+	 var content = editor.$txt.html();
+	 var text = editor.$txt.text();
+	 var author = $(".author").val();
+	 
+	 var is_publish = 1;
+	 var add_time = showLocale()+" "+hms();
+	 if(text != "" || title != "" || category_id != ""){
+		 $.ajax({
+			type:'post',
+			dataType:'text',
+			url:CTPPATH+'/admin/article/save',
+			data:{"itemTitle":title,"itemContent":content,"author":author,"typeId":category_id,"isPublish":is_publish,"addTime":add_time},
+		
+			beforeSend:function(){
+				//显示正在加载
+				layer.load(2);
+			},
+			success:function(data){
+
+				//关闭正在加载
+				setTimeout(function(){
+					  layer.closeAll('loading');
+				}, 1000);
+	
+				 if(data>0){
+					layer.msg('发布成功', {icon: 1,time:2000});
+					//window.location.href=CTPPATH+"/admin/category/show";
+
+				}else{
+					layer.msg("发布出错了", {icon: 2,time:2000});
+				} 
+			},
+			error:function(){
+
+				//关闭正在加载
+				setTimeout(function(){
+					  layer.closeAll('loading');
+				}, 1000);
+				layer.msg("出错了", {icon: 2,time:2000});
+			}
+		 });
+	 }else{
+		 layer.msg("不允许有空!");
+	 }
   });
   
+  //保存为草稿
+  $(".draft-btn").bind("click",function(){
+		 var title = $(".title").val();
+		 var category_id = $(".select-category").val();
+		 var content = editor.$txt.html();
+		 var text = editor.$txt.text();
+		 var author = $(".author").val();
+		 //保存草稿
+		 var is_publish = 0;
+		 var add_time = showLocale()+" "+hms();
+		 if(text != "" || title != "" || category_id != ""){
+			 $.ajax({
+				type:'post',
+				dataType:'text',
+				url:CTPPATH+'/admin/article/save',
+				data:{"itemTitle":title,"itemContent":content,"author":author,"typeId":category_id,"isPublish":is_publish,"addTime":add_time},
+			
+				beforeSend:function(){
+					//显示正在加载
+					layer.load(2);
+				},
+				success:function(data){
+
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000);
+		
+					 if(data>0){
+						layer.msg('发布成功', {icon: 1,time:2000});
+						//window.location.href=CTPPATH+"/admin/category/show";
+
+					}else{
+						layer.msg("发布出错了", {icon: 2,time:2000});
+					} 
+				},
+				error:function(){
+
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000);
+					layer.msg("出错了", {icon: 2,time:2000});
+				}
+			 });
+		 }else{
+			 layer.msg("不允许有空!");
+		 }
+	  });
   
   
 });

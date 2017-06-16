@@ -20,7 +20,13 @@
     <!-- 静态资源访问 -->
     <mvc:resources location="/resources/" mapping="/resources/**"/>     
      
-
+	<!-- 上传文件拦截，设置最大上传文件大小   20M=2*10*1024*1024(B)=20971520 bytes --> 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	      <!-- 文件大小最大值 -->  
+	      <property name="maxUploadSize" value="20971520" /> 
+	      <!-- 默认编码 -->  
+          <property name="defaultEncoding" value="utf-8" /> 
+    </bean>
      
     <!-- configure the InternalResourceViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"

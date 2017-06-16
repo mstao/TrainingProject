@@ -106,7 +106,7 @@
                 <ul class="layui-nav layui-nav-tree" lay-filter="left-nav" style="border-radius: 0;">
                     <li class="layui-nav-item layui-nav-itemed">
                         <a href="javascript:;" data-url="${CTP}/admin/welcome" data-id="1">
-                                                                            后台管理
+                                                                            后台主页
                         </a>
                     </li>
                     <li class="layui-nav-item">
@@ -139,12 +139,12 @@
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" data-url="https://www.baidu.com/" data-id="5">
+                                <a href="javascript:;" data-url="${CTP}/admin/article/list?p=1" data-id="5">
                                                                                                        内容列表
                                 </a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" data-url="${CTP}/admin/content/write" data-id="6">
+                                <a href="javascript:;" data-url="${CTP}/admin/article/write" data-id="6">
                              	       发布内容
                                 </a>
                             </dd>
@@ -159,7 +159,7 @@
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" data-url="https://www.baidu.com/" data-id="5">
+                                <a href="javascript:;" data-url="${CTP}/admin/category/show" data-id="7">
                                                                                                        栏目列表
                                 </a>
                             </dd>
@@ -174,12 +174,12 @@
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" data-url="https://www.baidu.com/" data-id="7">
+                                <a href="javascript:;" data-url="https://www.baidu.com/" data-id="8">
                              	      友链管理
                                 </a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" data-url="http://cn.bing.com/" data-id="8">
+                                <a href="javascript:;" data-url="http://cn.bing.com/" data-id="9">
                            		         清除缓存
                                 </a>
                             </dd>

@@ -4,18 +4,21 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import pers.train.admin.dao.ArticleMapper;
 import pers.train.admin.po.Article;
 import pers.train.admin.po.ArticleType;
 import pers.train.admin.service.ArticleService;
 import pers.train.common.base.service.impl.BaseServiceImpl;
+
 /**
  * 文章servie实现类 ，继承了{@link BaseServiceImpl}基类，
  * 实现了{@link ArticleService}接口
  * @author mingshan
  *
  */
+@Service
 @SuppressWarnings("rawtypes") 
 public class ArticleServiceImpl  extends BaseServiceImpl<Article> implements ArticleService {
 
@@ -35,15 +38,21 @@ public class ArticleServiceImpl  extends BaseServiceImpl<Article> implements Art
 	}
 
 	@Override
-	public List<ArticleType> selectArticleList(Map map) {
+	public List<Article> selectArticleList(Map map) {
 
 		return articleMapper.selectArticleList(map);
 	}
 
 	@Override
-	public List<ArticleType> selectArticleByTypeId(int typeId) {
+	public List<Article> selectArticleByTypeId(int typeId) {
 		
 		return articleMapper.selectArticleByTypeId(typeId);
+	}
+
+	@Override
+	public int selectArticleCount(Article article) {
+
+		return articleMapper.selectArticleCount(article);
 	}
 
 

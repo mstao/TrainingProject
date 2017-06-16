@@ -18,8 +18,8 @@
 #editor-container{
 	width:800px;
 	margin-top:0px;
-	
+    height:400px;
 }
 #editor-trigger{
-	height:300px;	
+    height:400px;
 }

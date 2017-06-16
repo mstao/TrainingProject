@@ -10,5 +10,5 @@ public class PageSizeConfig {
 	public static final int HOME_PAGE_SIZE = 10;
 	
 	/*******后台页面********/
-	public static final int ADMIN_PAGE_SIZE = 10;
+	public static final int ADMIN_PAGE_SIZE = 2;
 }

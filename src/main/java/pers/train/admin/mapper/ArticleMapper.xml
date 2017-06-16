@@ -28,6 +28,10 @@
 <!-- 定义sql片段 -->
 <sql id="query_article_where">
     
+    <if test="typeId !=null and typeId !=0">
+	  and type_id=#{typeId}
+	</if>
+    
     <!-- 用于批量删除 -->
 	<if test="ids !=null and ids!='' ">
 		<!-- foreach  遍历集合  拼接sql  id in(1,2) -->
@@ -39,9 +43,15 @@
 </sql>
 
 <!-- 根据条件查询文章信息  ，用到分页 -->
-<select id="selectUserList" parameterType="java.util.Map" resultMap="articleResultMap">
+<select id="selectArticleList" parameterType="java.util.Map" resultMap="articleResultMap">
 	select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
-	 from ps_article pa,ps_article_type pat 
+	 from ps_article pa,ps_article_type pat where pa.type_id=pat.id
+	
+	<!-- 判断查询是否需要 typeId条件 -->
+	<where>
+	 	<include refid="query_article_where"></include>
+	</where>
+	
 	<!-- 判断是否用到分页查询 ,即根据 position 和 pageSize 的有无来判断-->
 	<if test="position !=null and position !=''">
 	    <if test="pageSize !=null and pageSize!=''">
@@ -51,12 +61,23 @@
 	
 </select>
 
+<!-- 查询记录数量 -->
+<select id="selectArticleCount" parameterType="pers.train.admin.po.Article" resultType="java.lang.Integer">
+	select count(*) from ps_article 
+	<!-- 判断查询是否需要 typeId条件 -->
+	<where>
+	 	<include refid="query_article_where"></include>
+	</where>
+	
+	
+</select>
+
 <!-- 根据 type id 查询文章 -->
-<select id="selectArticleByTypeId" parameterType="java.lang.Integer" resultMap="articleResultMap">
+<!-- <select id="selectArticleByTypeId" parameterType="java.lang.Integer" resultMap="articleResultMap">
 	select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
 	 from ps_article pa,ps_article_type pat where pa.type_id=#{value}
 	
-</select>
+</select> -->
 
 <!--批量 删除文章 -->
 <delete id="deleteBatch" parameterType="pers.train.admin.po.Article">

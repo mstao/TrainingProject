@@ -1,6 +1,7 @@
 package pers.train.common.util;
 
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -32,10 +33,10 @@ public class UFunction{
       */  
     public static String substr(String str, int start, int end,boolean isDot) { 
     	int len=str.length();
-    	if(len<end){
+    	if(len < end){
     		return str;
     	}else{
-    		if(isDot==true){
+    		if(isDot == true){
     			return str.substring(start, end)+"...";	
     		}else{
     			return str.substring(start, end);	
