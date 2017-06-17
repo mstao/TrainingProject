@@ -18,6 +18,9 @@ public class ArticleType {
 	//栏目类型标识
 	private String itemFlag;
 	
+	//栏目id对应文章  一对多
+	private List<Article> articles;
+	
 	//批量删除
 	private List<Integer> ids;
 
@@ -52,6 +55,16 @@ public class ArticleType {
 	public void setIds(List<Integer> ids) {
 		this.ids = ids;
 	}
+
+	public List<Article> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
+
+
 	
 	
 }

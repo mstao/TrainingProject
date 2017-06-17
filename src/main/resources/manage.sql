@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50710
 File Encoding         : 65001
 
-Date: 2017-06-16 21:07:00
+Date: 2017-06-17 21:45:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,12 +29,12 @@ CREATE TABLE `ps_article` (
   `is_publish` int(2) DEFAULT NULL COMMENT '是否发布',
   `author` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_article
 -- ----------------------------
-INSERT INTO `ps_article` VALUES ('8', '第一篇文章', '<p>vv线程V型从v程序需宣传册vv&nbsp; 说的归属感</p><p>胜多负少否</p><p><img src=\"/TrainingProject/resources/Uploads/images/56e38322-1789-451f-baf5-5384ddce3c4f.png\" alt=\"2017-04-19_130831\" style=\"max-width: 100%; width: 620px; height: 419px;\" class=\"\"></p><p><br></p>', '7', '2017-06-16 00:00:00', '0', '1', 'mingshan');
+INSERT INTO `ps_article` VALUES ('8', '第一篇文章', '<p>1111vv线程V型从v程序需宣传册vv&nbsp; 说的归属感</p><p>胜多负少否</p><p><img src=\"/TrainingProject/resources/Uploads/images/56e38322-1789-451f-baf5-5384ddce3c4f.png\" alt=\"2017-04-19_130831\" style=\"max-width: 100%; width: 620px; height: 419px;\" class=\"\"></p><p><br></p>', '7', '2017-06-17 17:06:15', '0', '0', 'mingshan');
 
 -- ----------------------------
 -- Table structure for ps_article_type
@@ -47,7 +47,7 @@ CREATE TABLE `ps_article_type` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_sys_article_type` (`item_type`),
   UNIQUE KEY `idx_sys_article_flag` (`item_flag`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_article_type
@@ -56,6 +56,9 @@ INSERT INTO `ps_article_type` VALUES ('1', '好书相伴', 'book');
 INSERT INTO `ps_article_type` VALUES ('2', '教师风采', 'teacher');
 INSERT INTO `ps_article_type` VALUES ('5', '爱在身边', 'love');
 INSERT INTO `ps_article_type` VALUES ('7', '读书心得', 'read');
+INSERT INTO `ps_article_type` VALUES ('8', '智慧课堂', 'class');
+INSERT INTO `ps_article_type` VALUES ('9', '教育教研', 'education');
+INSERT INTO `ps_article_type` VALUES ('10', '特色活动', 'activity');
 
 -- ----------------------------
 -- Table structure for ps_friend_link
@@ -71,6 +74,7 @@ CREATE TABLE `ps_friend_link` (
 -- ----------------------------
 -- Records of ps_friend_link
 -- ----------------------------
+INSERT INTO `ps_friend_link` VALUES ('1', '222', 'www.baidu.com');
 
 -- ----------------------------
 -- Table structure for ps_security_permission

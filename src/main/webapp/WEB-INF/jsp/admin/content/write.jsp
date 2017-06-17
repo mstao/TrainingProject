@@ -153,7 +153,7 @@ layui.use(['layer','element','form','flow'], function() {
 	 
 	 var is_publish = 1;
 	 var add_time = showLocale()+" "+hms();
-	 if(text != "" || title != "" || category_id != ""){
+	 if(text != "" &&  title != "" &&  category_id != ""){
 		 $.ajax({
 			type:'post',
 			dataType:'text',
@@ -203,7 +203,7 @@ layui.use(['layer','element','form','flow'], function() {
 		 //保存草稿
 		 var is_publish = 0;
 		 var add_time = showLocale()+" "+hms();
-		 if(text != "" || title != "" || category_id != ""){
+		 if(text != "" &&  title != "" &&  category_id != ""){
 			 $.ajax({
 				type:'post',
 				dataType:'text',

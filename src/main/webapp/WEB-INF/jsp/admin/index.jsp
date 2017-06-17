@@ -69,7 +69,7 @@
                 <!-- 水平导航 -->
                 <ul class="layui-nav" style="position: absolute; top: 0; right: 0; background: none;">
                     <li class="layui-nav-item">
-                        <a href="javascript:;">
+                        <a href="${CTP}/home/index">
                          	   进入前台
                         </a>
                     </li>
@@ -174,7 +174,7 @@
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" data-url="https://www.baidu.com/" data-id="8">
+                                <a href="javascript:;" data-url="${CTP}/admin/link/list" data-id="8">
                              	      友链管理
                                 </a>
                             </dd>

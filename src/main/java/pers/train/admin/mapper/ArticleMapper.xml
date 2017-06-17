@@ -29,7 +29,7 @@
 <sql id="query_article_where">
     
     <if test="typeId !=null and typeId !=0">
-	  and type_id=#{typeId}
+	  and pa.type_id=#{typeId}
 	</if>
     
     <!-- 用于批量删除 -->
@@ -45,10 +45,11 @@
 <!-- 根据条件查询文章信息  ，用到分页 -->
 <select id="selectArticleList" parameterType="java.util.Map" resultMap="articleResultMap">
 	select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
-	 from ps_article pa,ps_article_type pat where pa.type_id=pat.id
+	 from ps_article pa,ps_article_type pat  
 	
 	<!-- 判断查询是否需要 typeId条件 -->
 	<where>
+	     pa.type_id=pat.id
 	 	<include refid="query_article_where"></include>
 	</where>
 	
@@ -63,7 +64,7 @@
 
 <!-- 查询记录数量 -->
 <select id="selectArticleCount" parameterType="pers.train.admin.po.Article" resultType="java.lang.Integer">
-	select count(*) from ps_article 
+	select count(*) from ps_article pa
 	<!-- 判断查询是否需要 typeId条件 -->
 	<where>
 	 	<include refid="query_article_where"></include>
@@ -78,6 +79,20 @@
 	 from ps_article pa,ps_article_type pat where pa.type_id=#{value}
 	
 </select> -->
+
+<!-- 根据id查询 -->
+<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="articleResultMap">
+select pa.id,pa.item_title,pa.item_content,pa.type_id,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
+	 from ps_article pa,ps_article_type pat where pa.id=#{value}
+	 
+</select>
+
+<!-- 模糊查询 -->
+<select id="selectArticleByToken" parameterType="java.lang.String" resultMap="articleResultMap">
+select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
+	 from ps_article pa,ps_article_type pat where pa.item_title LIKE '%${value}%'
+	 
+</select>
 
 <!--批量 删除文章 -->
 <delete id="deleteBatch" parameterType="pers.train.admin.po.Article">
@@ -105,7 +120,7 @@
 	    <if test="typeId !=null and typeId !=0">
 	    	type_id=#{typeId},
 	    </if>
-	    <if test="addTime !=null and add_time !=''">
+	    <if test="addTime !=null and addTime !=''">
 	    	add_time=#{addTime},
 	    </if>
 	    <if test="isPublish !=null and isPublish !=''">

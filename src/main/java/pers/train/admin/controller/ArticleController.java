@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -62,25 +61,31 @@ public class ArticleController {
 		return "admin/content/write";
 	}
 	
+	/**
+	 * 显示列表
+	 * @param p
+	 * @param typeId
+	 * @param map
+	 * @return
+	 */
 	@RequestMapping("/list")
-	public String showList(Integer p,@RequestParam(value = "typeId", required=false) Integer typeId,ModelMap map) {
+	public String showList(Integer p,@RequestParam(value = "typeId", required = false) String typeId,ModelMap map) {
 		
 		String sp = p + "";
 		String url = "";
 	    HashMap<String,Object> uMap = new HashMap<String,Object>();
 		Article article = new Article();
-	    if(("".equals(sp))){
+	    if(("".equals(sp))) {
 			p = 1;
 	    }
-	    String sTypeId=typeId+"";
-	    
-	    System.out.println("00"+sTypeId);
-	    if(typeId == null){
+	   	    
+	    if(typeId == null) {
 	    	url = "./list?p=";
-	    }else{
-	    	url = "./list?typeId='"+sTypeId+"'&p=";
-	    	uMap.put("typeId", typeId);
-	    	article.setTypeId(typeId);
+	    } else {
+	    	int iTypeId = Integer.parseInt(typeId);
+	    	url = "./list?typeId='"+typeId+"'&p=";
+	    	uMap.put("typeId", iTypeId);
+	    	article.setTypeId(iTypeId);
 	    }
 	    
 	    //获取总记录量
@@ -190,9 +195,24 @@ public class ArticleController {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally{
+		} finally {
 			out.close();
 		}
+	}
+	
+	/**
+	 * 显示更新文章界面
+	 * @return
+	 */
+	@RequestMapping("/showUpdate")
+	public String showUpdate(Integer id,ModelMap map) {
+		//根据i的获取文章信息
+		Article articles = articleService.findById(id);
+		//获取栏目信息
+		List<ArticleType> typeList = articleTypeService.findAll();
+		map.put("typeList", typeList);
+		map.put("articles", articles);
+		return "admin/content/update";
 	}
 	
 	

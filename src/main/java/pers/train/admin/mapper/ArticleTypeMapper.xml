@@ -24,6 +24,16 @@
 	<result property="itemType" column="item_type"/>
 	<result property="itemFlag" column="item_flag"/>
 	
+	<!-- 文章信息 -->
+	<collection property="articles" ofType="pers.train.admin.po.Article">
+	    <id column="article_id" property="id"/>
+		<result column="item_title" property="itemTitle"/>
+		<result column="add_time" property="addTime"/>
+		<result column="author" property="author"/>
+		<result column="is_publish" property="isPublish"/>
+	   
+	</collection>
+	
 </resultMap>
 
 <!-- 查询全部栏目 -->
@@ -34,6 +44,11 @@
 <!-- 模糊查询栏目 -->
 <select id="selectByToken" parameterType="java.lang.String" resultMap="typeResultMap">
 	select id,item_type,item_flag from ps_article_type where item_type LIKE '%${value}%' OR item_flag LIKE '%${value}%'
+</select>
+
+<!-- 前台首页信息加载 -->
+<select id="selectSimpleArticleListByType" resultMap="typeResultMap">
+	select pat.id,pat.item_type,pat.item_flag,pa.id article_id,pa.item_title,pa.author,pa.add_time,pa.is_publish from ps_article_type pat LEFT JOIN ps_article pa ON pa.type_id=pat.id  where pa.type_id=pat.id limit 0,6
 </select>
 
 <!-- 修改栏目名称 -->

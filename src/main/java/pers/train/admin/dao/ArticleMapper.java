@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import pers.train.admin.po.Article;
-import pers.train.admin.po.ArticleType;
 import pers.train.common.base.dao.BaseMapper;
 
 /**

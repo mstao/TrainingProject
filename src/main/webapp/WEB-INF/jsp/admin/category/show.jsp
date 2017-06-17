@@ -349,7 +349,7 @@ layui.use(['layer','element','form'], function() {
 		
 	});
     
-	//更新角色
+	//更新栏目
 	$(document).on("click",".update-category-btn",function(){
 	/* $(".update-category-btn").bind("click",function(){ */
 		var r_td = $(this).parent().parent().children()

@@ -1,7 +1,5 @@
 package pers.train.admin.service;
 
-import java.util.List;
-
 import pers.train.admin.po.FriendLink;
 import pers.train.common.base.service.BaseService;
 /**
@@ -10,9 +8,6 @@ import pers.train.common.base.service.BaseService;
  *
  */
 public interface FriendLinkService extends BaseService<FriendLink> {
-	//模糊查询
-    List<FriendLink> selectByToken(String token);
-	
-    //批量删除
-	int deleteBatch(FriendLink friendLink); 
+
+
 }

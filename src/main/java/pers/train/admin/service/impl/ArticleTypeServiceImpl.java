@@ -34,6 +34,12 @@ public class ArticleTypeServiceImpl extends BaseServiceImpl<ArticleType> impleme
 		return articleTypeMapper.deleteBatch(articleType);
 	}
 
+	@Override
+	public List<ArticleType> selectSimpleArticleListByType() {
+
+		return articleTypeMapper.selectSimpleArticleListByType();
+	}
+
 
 
 }
