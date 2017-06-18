@@ -104,10 +104,9 @@
             <div class="link">
             	<div class="linelink">
             		<span>友情链接：</span>
+            		<c:forEach items="" var="">
 					<a href="javascript:void(0)">上海教育网</a>
-					<a href="javascript:void(0)">上海杰普软件科技有限公司</a>
-					<a href="javascript:void(0)">XX学院</a>
-					<a href="javascript:void(0)">XX大学</a>
+					</c:forEach>
                 </div>
             </div>
         </div>

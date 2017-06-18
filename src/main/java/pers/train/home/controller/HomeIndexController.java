@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import pers.train.admin.po.Article;
 import pers.train.admin.po.ArticleType;
+import pers.train.admin.po.FriendLink;
 import pers.train.admin.service.ArticleService;
 import pers.train.admin.service.ArticleTypeService;
+import pers.train.admin.service.FriendLinkService;
 import pers.train.common.base.service.PageHelperService;
 import pers.train.common.config.PageSizeConfig;
 
@@ -38,6 +40,9 @@ public class HomeIndexController {
 	@Autowired
 	private PageHelperService pageHelperService;
 	
+	@Autowired
+	private FriendLinkService friendLinkService;
+	
 	private int pageSize = PageSizeConfig.HOME_PAGE_SIZE;
 	
 	@RequestMapping("/index")
@@ -49,6 +54,10 @@ public class HomeIndexController {
 		//获取简单文章信息
 		List<ArticleType> articleList = articleTypeService.selectSimpleArticleListByType();
 		
+		//获取友情链接
+		List<FriendLink> link = friendLinkService.findAll();
+		
+		map.put("link", link);
 		map.put("typeList", typeList);
 		map.put("articleList", articleList);
 		return "home/index";
@@ -65,6 +74,10 @@ public class HomeIndexController {
 		Article article = articleService.findById(id);
 		//获取栏目信息
 		List<ArticleType> typeList = articleTypeService.findAll();
+		//获取友情链接
+		List<FriendLink> link = friendLinkService.findAll();
+		
+		map.put("link", link);
 		map.put("details", article);
 		map.put("typeList", typeList);
 		return "home/details";
@@ -112,6 +125,10 @@ public class HomeIndexController {
 		ArticleType type = articleTypeService.findById(iTypeId);
 		//获取栏目信息
 		List<ArticleType> typeList = articleTypeService.findAll();
+		//获取友情链接
+		List<FriendLink> link = friendLinkService.findAll();
+		
+		map.put("link", link);
 		map.put("toolBar", toolBar);
 		map.put("list", list);
 		map.put("type", type);

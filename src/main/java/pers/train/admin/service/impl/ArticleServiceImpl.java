@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import pers.train.admin.dao.ArticleMapper;
 import pers.train.admin.po.Article;
-import pers.train.admin.po.ArticleType;
 import pers.train.admin.service.ArticleService;
 import pers.train.common.base.service.impl.BaseServiceImpl;
 

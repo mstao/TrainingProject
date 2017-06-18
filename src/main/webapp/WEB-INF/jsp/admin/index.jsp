@@ -174,7 +174,7 @@
                         </a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" data-url="${CTP}/admin/link/list" data-id="8">
+                                <a href="javascript:;" data-url="${CTP}/admin/link/show" data-id="8">
                              	      友链管理
                                 </a>
                             </dd>

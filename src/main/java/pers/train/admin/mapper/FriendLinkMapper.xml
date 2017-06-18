@@ -5,6 +5,18 @@
   
 <mapper namespace="pers.train.admin.dao.FriendLinkMapper">
 
+<!-- 定义sql片段 -->
+<sql id="query_type_where">
+ 
+	<if test="ids !=null and ids!='' ">
+		<!-- foreach  遍历集合  拼接sql  id in(1,2) -->
+         <foreach collection="ids" item="item" open="id in(" close=")" separator="," >        
+         	#{item}
+         </foreach> 
+	</if>
+	 
+</sql>
+
 <resultMap type="pers.train.admin.po.FriendLink" id="linkResultMap">
 	<id column="id" property="id"/>
 	<result column="link_name" property="linkName"/>
@@ -14,5 +26,50 @@
 <select id="selectAll" resultMap="linkResultMap">
 	select id,link_name,link_url from ps_friend_link
 </select>
+
+<!-- 模糊查询栏目 -->
+<select id="selectByToken" parameterType="java.lang.String" resultMap="linkResultMap">
+	select id,link_name,link_url from ps_friend_link where link_name LIKE '%${value}%' 
+</select>
+
+<!-- 根据栏目id查询栏目信息 -->
+<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="linkResultMap">
+    select id,link_name,link_url from ps_friend_link where id=#{value}
+</select>
+
+
+<!-- 修改栏目名称 -->
+<update id="updateByPrimaryKeySelective" parameterType="pers.train.admin.po.FriendLink">
+	update ps_friend_link
+	<set>
+	   <if test="linkName !=null and linkName !=''">
+	    	link_name=#{linkName},
+	   </if>
+	   <if test="linkUrl !=null and linkUrl !=''">
+	   		link_url=#{linkUrl}
+	   </if>
+	</set>
+	where id=#{id}
+	
+</update>
+
+<!-- 新增栏目 -->
+<insert id="insert" parameterType="pers.train.admin.po.FriendLink">
+   <!-- 主键值返回 -->
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+	insert into ps_friend_link(link_name,link_url) 
+	values (#{linkName}, #{linkUrl})
+</insert>
+
+<!-- 删除栏目 ->批量删除 -->
+<delete id="deleteBatch" parameterType="pers.train.admin.po.FriendLink"> 
+	delete from ps_friend_link
+	<where>
+		<include refid="query_type_where"></include>
+	</where>
+	
+</delete>
 
 </mapper>

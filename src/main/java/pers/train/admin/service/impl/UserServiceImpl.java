@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import pers.train.admin.dao.SecurityUserMapper;
 import pers.train.admin.po.SecurityPermission;
 import pers.train.admin.po.SecurityUser;
-import pers.train.admin.service.ArticleService;
 import pers.train.admin.service.UserService;
 import pers.train.common.base.service.impl.BaseServiceImpl;
 
