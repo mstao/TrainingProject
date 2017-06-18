@@ -17,28 +17,9 @@
 </head>
 <body>
 <div id="main">
-    <div class="top">
-    	<div class="topbg">
-            <div class="logo_sign">
-            	<div class="logo"></div>
-                <div class="sign">
-                	<span>欢迎您系统管理员</span>
-                    <span class="sp_home">首页</span>
-                    <span class="sp_backstage">后台管理</span>
-                    <span class="sp_signout">退出</span>
-                </div>
-            </div> 
-            <div class="nav">
-            	<ul class="navUI">
-                	<li><a href="${CTP}/home/index">首页</a></li>
-	            	<c:forEach items="${typeList }" var="list">
-	                	<li><a href="${CTP}/home/list?typeId=${list.id}&p=1">${list.itemType}</a></li>
-	                </c:forEach> 
-                </ul>
-            </div>
-            
-        </div>
-    </div>
+
+<jsp:include page="common/header.jsp"></jsp:include>
+    
     <div class="content">
     	<div class="congw">
            <div class="conarticle">
@@ -58,16 +39,15 @@
            </div>
             <div class="link">
             	<div class="linelink">
-            		<span>友情链接：</span><a href="javascript:void(0)">上海教育网</a><a href="javascript:void(0)">上海教育网</a><a href="javascript:void(0)">上海教育网</a><a href="javascript:void(0)">上海教育网</a><a href="javascript:void(0)">上海教育网</a><a href="javascript:void(0)">上海教育网</a>
+            		<span>友情链接：</span>
+            		<c:forEach items="${link}" var="link">
+					<a href="http://${link.linkUrl}">${link.linkName}</a>
+					</c:forEach>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer">
-    	<div class="foot">
-        	<p>杰普信息发布系统 技术支持：<a href="javascript:void(0)">上海杰普软件科技有限公司</a>      电话：021-xxxxxxx</p>
-        </div>
-    </div>
+  <jsp:include page="common/footer.jsp"></jsp:include>
 </div>
 </body>
 </html>

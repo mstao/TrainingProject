@@ -58,13 +58,14 @@
 	     pa.type_id=pat.id
 	 	<include refid="query_article_where"></include>
 	</where>
-	
+	order by pa.add_time desc
+    limit #{position},#{pageSize}
 	<!-- 判断是否用到分页查询 ,即根据 position 和 pageSize 的有无来判断-->
-	<if test="position !=null and position !=''">
+	<!-- <if test="position !=null and position !=''">
 	    <if test="pageSize !=null and pageSize!=''">
-	       limit #{position},#{pageSize}
+	      
 	    </if>
-	</if>
+	</if> -->
 	
 </select>
 
@@ -90,14 +91,14 @@
 <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="articleResultMap">
 select pa.id,pa.item_title,pa.item_content,pa.type_id,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
 	 from ps_article pa,ps_article_type pat where pa.type_id=pat.id and  pa.id=#{value}
-	 
+     order by pa.add_time desc	 
 </select>
 
 <!-- 模糊查询 -->
 <select id="selectArticleByToken" parameterType="java.lang.String" resultMap="articleResultMap">
 select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
 	 from ps_article pa,ps_article_type pat where pa.item_title LIKE '%${value}%'
-	 
+	 order by pa.add_time desc
 </select>
 
 <!--批量 删除文章 -->
@@ -129,11 +130,15 @@ select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,p
 	    <if test="addTime !=null and addTime !=''">
 	    	add_time=#{addTime},
 	    </if>
-	    <if test="isPublish !=null and isPublish !=''">
-	    	is_publish=#{isPublish}
+	    <if test="isPublish !=null">
+	    	is_publish=#{isPublish},
+	    </if>
+	    <if test="author !=null and author !=''">
+	    	author=#{author},
 	    </if>
 	</set> 
-	
+	 
+	 where id=#{id}
 </update>
 
 <!-- 添加文章 -->
@@ -142,5 +147,9 @@ select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,p
 	values (#{itemTitle},#{itemContent},#{typeId},#{addTime},#{author},#{isPublish})
 	
 </insert>
+
+<update id="addViewCount" parameterType="java.lang.Integer">
+	update ps_article set view_count = view_count+1 where id=#{value}
+</update>
 
 </mapper>

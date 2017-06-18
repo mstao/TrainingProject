@@ -76,6 +76,8 @@ public class HomeIndexController {
 		List<ArticleType> typeList = articleTypeService.findAll();
 		//获取友情链接
 		List<FriendLink> link = friendLinkService.findAll();
+		//浏览量+1
+		articleService.addViewCount(id);
 		
 		map.put("link", link);
 		map.put("details", article);

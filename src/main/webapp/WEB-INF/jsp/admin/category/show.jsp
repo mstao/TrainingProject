@@ -100,8 +100,9 @@ background:#0088CC;
 			</tr>
 		</thead>
 		<tbody>
-		
-		<c:forEach items="${typeList}" var="list"> 
+		<c:set var="len" value="0"/>
+		<c:forEach items="${typeList}" var="list" > 
+			<c:set var="len" value="${len+1}"/>
 			<tr>
 				<td data-id="${list.id}"> <input type="checkbox" name="info_id" value="${list.id}"></td>
 				<td>${list.itemType}</td>
@@ -148,7 +149,9 @@ layui.use(['layer','element','form'], function() {
     
     //新增弹出
 	$('#add').on('click', function(){
-		 layer.open({
+		var len = "${len}";
+        if(len < 8) {
+        	layer.open({
 		        type: 2,
 		      //  skin: 'layui-layer-lan',
 		        title: '新增栏目',
@@ -158,7 +161,11 @@ layui.use(['layer','element','form'], function() {
 		        area: ['600px', '300px'],
 		        content: CTP_PATH+'/admin/category/showAddCategory',
 		       
-	  });
+	       });
+        } else {
+        	layer.msg("栏目数量限制8个");
+        }
+		
 	});
     
 	//批量删除

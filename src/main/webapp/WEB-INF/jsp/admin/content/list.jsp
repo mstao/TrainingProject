@@ -48,6 +48,7 @@ var DEFAULT_USERNAME = "<shiro:principal/>";
 		      <select name="interest"  class="select-category">
 		      <option value="-1">--选择栏目--</option>
 		      <c:forEach items="${typeList}" var="list">
+		       
 		        <option value="${list.id}">${list.itemType}</option>
 		      </c:forEach>
 		      </select>
@@ -360,7 +361,7 @@ layui.use(['layer','element','form'], function() {
 			        	
 			        	
 			        }else{
-			        	xhtml+="<tr><td colspan='4' style='background:#F2DEDE; color:#444444;'>没有找到文章信息</td></tr>";
+			        	xhtml+="<tr><td colspan='9' style='background:#F2DEDE; color:#444444;'>没有找到文章信息</td></tr>";
 			        }
 			        
 			        xhtml+="</tbody>";

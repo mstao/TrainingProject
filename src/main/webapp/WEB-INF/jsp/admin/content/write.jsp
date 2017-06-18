@@ -173,8 +173,9 @@ layui.use(['layer','element','form','flow'], function() {
 	
 				 if(data>0){
 					layer.msg('发布成功', {icon: 1,time:2000});
-					//window.location.href=CTPPATH+"/admin/category/show";
-
+					 $(".title").val("");
+					 editor.$txt.html("");
+					 $(".author").val("");
 				}else{
 					layer.msg("发布出错了", {icon: 2,time:2000});
 				} 
@@ -223,8 +224,10 @@ layui.use(['layer','element','form','flow'], function() {
 		
 					 if(data>0){
 						layer.msg('发布成功', {icon: 1,time:2000});
-						//window.location.href=CTPPATH+"/admin/category/show";
 
+						 $(".title").val("");
+						 editor.$txt.html("");
+						 $(".author").val("");
 					}else{
 						layer.msg("发布出错了", {icon: 2,time:2000});
 					} 

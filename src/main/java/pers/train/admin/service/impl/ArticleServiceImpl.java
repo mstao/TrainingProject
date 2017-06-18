@@ -54,6 +54,12 @@ public class ArticleServiceImpl  extends BaseServiceImpl<Article> implements Art
 		return articleMapper.selectArticleCount(article);
 	}
 
+	@Override
+	public void addViewCount(int id) {
+		
+		articleMapper.addViewCount(id);
+	}
+
 
 
 	

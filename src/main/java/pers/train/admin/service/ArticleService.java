@@ -26,4 +26,7 @@ public interface ArticleService extends BaseService<Article> {
   	
   	//根据typeId查询信息
   	List<Article> selectArticleByTypeId(int typeId);
+  	
+	//浏览量+1
+  	void addViewCount(int id);
 }

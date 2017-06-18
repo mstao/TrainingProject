@@ -38,7 +38,7 @@
 
 <!-- 查询全部栏目 -->
 <select id="selectAll" resultMap="typeResultMap">
-	select id,item_type,item_flag from ps_article_type
+	select id,item_type,item_flag from ps_article_type 
 </select>
 
 <!-- 模糊查询栏目 -->
@@ -48,13 +48,13 @@
 
 <!-- 根据栏目id查询栏目信息 -->
 <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="typeResultMap">
-    select id,item_type,item_flag from ps_article_type where id=#{value}
+    select id,item_type,item_flag from ps_article_type where id=#{value} 
 </select>
 
 <!-- 前台首页信息加载 -->
 <select id="selectSimpleArticleListByType" resultMap="typeResultMap">
 	select pat.id,pat.item_type,pat.item_flag,pa.id article_id,pa.item_title,pa.author,pa.add_time,pa.is_publish,pa.type_id from ps_article_type pat 
-	LEFT JOIN (SELECT id,item_title,author,add_time,is_publish,type_id  FROM ps_article where is_publish=1 LIMIT 0,6) pa ON pa.type_id=pat.id  limit 0,6
+	LEFT JOIN  ps_article pa ON pa.type_id=pat.id and pa.is_publish=1 order by pa.add_time desc
 </select>
 
 <!-- 修改栏目名称 -->

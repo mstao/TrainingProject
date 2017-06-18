@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50710
 File Encoding         : 65001
 
-Date: 2017-06-17 21:45:34
+Date: 2017-06-18 17:58:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,12 +29,23 @@ CREATE TABLE `ps_article` (
   `is_publish` int(2) DEFAULT NULL COMMENT '是否发布',
   `author` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_article
 -- ----------------------------
-INSERT INTO `ps_article` VALUES ('8', '第一篇文章', '<p>1111vv线程V型从v程序需宣传册vv&nbsp; 说的归属感</p><p>胜多负少否</p><p><img src=\"/TrainingProject/resources/Uploads/images/56e38322-1789-451f-baf5-5384ddce3c4f.png\" alt=\"2017-04-19_130831\" style=\"max-width: 100%; width: 620px; height: 419px;\" class=\"\"></p><p><br></p>', '7', '2017-06-17 17:06:15', '0', '0', 'mingshan');
+INSERT INTO `ps_article` VALUES ('26', 'mmm', '<p>vvxv<br></p><p>wqee<br></p><p><br></p>', '1', '2017-06-18 15:05:56', '0', '0', 'aaweq');
+INSERT INTO `ps_article` VALUES ('27', 'eqweq', '<p>weqe<br></p>', '5', '2017-06-18 15:07:41', '0', '1', 'eqw');
+INSERT INTO `ps_article` VALUES ('28', 'sdadadas', '<p>weqeq<br></p>', '7', '2017-06-18 15:07:49', '0', '1', 'asddasd');
+INSERT INTO `ps_article` VALUES ('29', 'mmmgrer', '<p>weqeqq<br></p>', '8', '2017-06-18 15:07:58', '0', '1', 'asa');
+INSERT INTO `ps_article` VALUES ('30', 'lllllllllllllllllluytrfdsxAsdxad', '<p>weqeqqw<br></p>', '9', '2017-06-18 15:08:09', '0', '1', 'asa');
+INSERT INTO `ps_article` VALUES ('31', 'ppppppppppppppppppppppppppp', '<p>wqeq<br></p>', '10', '2017-06-18 15:08:17', '0', '1', 'asa');
+INSERT INTO `ps_article` VALUES ('32', '2323424242', '<p>恶趣味鹅鹅鹅鹅鹅鹅鹅鹅鹅鹅鹅鹅鹅鹅鹅鹅<br></p>', '1', '2017-06-18 15:28:36', '0', '1', '啊啊');
+INSERT INTO `ps_article` VALUES ('33', '恶气企鹅企鹅请问', '<p>请问委屈<br></p>', '1', '2017-06-18 15:28:42', '0', '1', '啊啊');
+INSERT INTO `ps_article` VALUES ('34', '请问恶气恶气恶气恶气', '<p>请问去<br></p>', '1', '2017-06-18 15:28:47', '0', '1', '啊啊');
+INSERT INTO `ps_article` VALUES ('35', 'e请问发顺丰到付是', '<p>请问去恶趣味企鹅<br></p>', '1', '2017-06-18 15:28:53', '0', '1', '啊啊');
+INSERT INTO `ps_article` VALUES ('36', 'e驱蚊器恶趣味驱蚊器恶气', '<p>请问q<br></p>', '1', '2017-06-18 15:29:05', '0', '1', '啊啊');
+INSERT INTO `ps_article` VALUES ('37', '恶趣味驱蚊器饿q', '<p>请问q额请问去<br></p>', '1', '2017-06-18 15:29:19', '5', '1', '啊啊');
 
 -- ----------------------------
 -- Table structure for ps_article_type
@@ -47,7 +58,7 @@ CREATE TABLE `ps_article_type` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_sys_article_type` (`item_type`),
   UNIQUE KEY `idx_sys_article_flag` (`item_flag`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_article_type
@@ -59,17 +70,18 @@ INSERT INTO `ps_article_type` VALUES ('7', '读书心得', 'read');
 INSERT INTO `ps_article_type` VALUES ('8', '智慧课堂', 'class');
 INSERT INTO `ps_article_type` VALUES ('9', '教育教研', 'education');
 INSERT INTO `ps_article_type` VALUES ('10', '特色活动', 'activity');
+INSERT INTO `ps_article_type` VALUES ('12', '我的诸国', 'aaaaa');
 
 -- ----------------------------
 -- Table structure for ps_friend_link
 -- ----------------------------
 DROP TABLE IF EXISTS `ps_friend_link`;
 CREATE TABLE `ps_friend_link` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `link_name` varchar(20) DEFAULT NULL,
   `link_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_friend_link

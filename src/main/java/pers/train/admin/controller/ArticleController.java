@@ -90,8 +90,8 @@ public class ArticleController {
 	    
 	    //获取总记录量
 	    int count = articleService.selectArticleCount(article);
-	    
-	    System.out.println("count ="+count);
+	    System.out.println("总记录量="+count);
+
 	    //计算偏移量
 	    int position = (p-1)*pageSize;
 	

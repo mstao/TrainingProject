@@ -31,6 +31,7 @@ var DEFAULT_USERNAME = "<shiro:principal/>";
 <!-- 标题 -->
 
 <form class="layui-form">
+<input type="hidden" value="${articles.id }" class="a_id">
   <div class="layui-form-item">
     <label class="layui-form-label">标题</label>
     <div class="layui-input-block">
@@ -145,8 +146,9 @@ layui.use(['layer','element','form','flow'], function() {
   //创建编辑器
   editor.create();
     
-  //发布
+  //修改发布
   $(".publish-btn").bind("click",function(){
+	 var id = $(".a_id").val();
 	 var title = $(".title").val();
 	 var category_id = $(".select-category").val();
 	 var content = editor.$txt.html();
@@ -160,7 +162,7 @@ layui.use(['layer','element','form','flow'], function() {
 			type:'post',
 			dataType:'text',
 			url:CTPPATH+'/admin/article/update',
-			data:{"itemTitle":title,"itemContent":content,"author":author,"addTime":add_time,"typeId":category_id,"isPublish":is_publish},
+			data:{"id":id,"itemTitle":title,"itemContent":content,"author":author,"addTime":add_time,"isPublish":is_publish,"typeId":category_id},
 		
 			beforeSend:function(){
 				//显示正在加载
@@ -175,8 +177,8 @@ layui.use(['layer','element','form','flow'], function() {
 	
 				 if(data>0){
 					layer.msg('修改成功', {icon: 1,time:2000});
-					//window.location.href=CTPPATH+"/admin/category/show";
 
+					window.location.href=CTPPATH+"/admin/article/list?p=1";
 				}else{
 					layer.msg("修改出错了", {icon: 2,time:2000});
 				} 
@@ -197,6 +199,7 @@ layui.use(['layer','element','form','flow'], function() {
   
   //保存为草稿
   $(".draft-btn").bind("click",function(){
+	     var id = $(".a_id").val();
 		 var title = $(".title").val();
 		 var category_id = $(".select-category").val();
 		 var content = editor.$txt.html();
@@ -210,7 +213,7 @@ layui.use(['layer','element','form','flow'], function() {
 				type:'post',
 				dataType:'text',
 				url:CTPPATH+'/admin/article/update',
-				data:{"itemTitle":title,"itemContent":content,"author":author,"addTime":add_time,"typeId":category_id,"isPublish":is_publish},
+				data:{"id":id,"itemTitle":title,"itemContent":content,"author":author,"addTime":add_time,"isPublish":is_publish,"typeId":category_id},
 			
 				beforeSend:function(){
 					//显示正在加载
@@ -225,8 +228,8 @@ layui.use(['layer','element','form','flow'], function() {
 		
 					 if(data>0){
 						layer.msg('保存草稿成功', {icon: 1,time:2000});
-						//window.location.href=CTPPATH+"/admin/category/show";
-
+					
+						window.location.href=CTPPATH+"/admin/article/list?p=1";
 					}else{
 						layer.msg("保存草稿出错了", {icon: 2,time:2000});
 					} 
