@@ -7,9 +7,9 @@ import org.apache.shiro.util.ByteSource;
 public class CrypographyUtil {
 
 	
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		
-	}
+	}*/
 	
 	/**
 	 * base64加密

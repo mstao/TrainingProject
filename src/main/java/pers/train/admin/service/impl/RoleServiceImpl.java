@@ -13,7 +13,8 @@ import pers.train.common.base.service.impl.BaseServiceImpl;
 
 
 /**
- * 角色
+ * 角色service实现类，继承了{@link BaseServiceImpl}基类，
+ * 实现了{@link RoleService}接口
  * @author mingshan
  *
  */

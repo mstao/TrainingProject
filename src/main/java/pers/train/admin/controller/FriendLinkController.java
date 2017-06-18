@@ -88,7 +88,7 @@ public class FriendLinkController {
 	        //执行删除语句
 	        friendLinkService.deleteBatch(link);
 	        return "1";
-		} catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -106,7 +106,7 @@ public class FriendLinkController {
 		int result =  friendLinkService.update(friendLink);		
 		if(result > 0) {
 			r = "1";
-		} else{
+		} else {
 			r = "0";
 		}
 		
@@ -133,7 +133,7 @@ public class FriendLinkController {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally{
+		} finally {
 			out.close();
 		}
 	}

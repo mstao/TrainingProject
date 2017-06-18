@@ -37,7 +37,7 @@ import pers.train.common.config.PageSizeConfig;
  */
 @Controller
 @RequestMapping("/admin/authority")
-public class AuthorityController{
+public class AuthorityController {
     
     @Autowired
     private RoleService roleService;
@@ -63,7 +63,7 @@ public class AuthorityController{
      * @return
      */
     @RequestMapping("/roleList")
-	public String showRoleList(ModelMap map){
+	public String showRoleList(ModelMap map) {
 		
 		//获取角色列表
 		ArrayList<SecurityRole> roles = (ArrayList<SecurityRole>)roleService.findAll();
@@ -77,7 +77,7 @@ public class AuthorityController{
      * @return
      */
     @RequestMapping("/showAddRole")
-	public String showAddRole(){
+	public String showAddRole() {
 		return "admin/authority/add-role";
 	}
 	
@@ -88,7 +88,7 @@ public class AuthorityController{
      */
     @RequestMapping("/saveRole")
     @ResponseBody
-    public String saveRole(SecurityRole role){
+    public String saveRole(SecurityRole role) {
     	int result = roleService.insert(role);
     	return result + "";
     }
@@ -104,7 +104,7 @@ public class AuthorityController{
 	 */
 	@RequestMapping("/deleteRole")
 	@ResponseBody
-	public String deleteRole(String ids){
+	public String deleteRole(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
@@ -122,7 +122,7 @@ public class AuthorityController{
 	        //执行删除语句
 	        roleService.deleteBatch(role);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -134,7 +134,7 @@ public class AuthorityController{
 	 * @param response
 	 */
 	@RequestMapping("/findRoleByName")
-	public  void findRoleByName(String token,HttpServletResponse response){
+	public  void findRoleByName(String token,HttpServletResponse response) {
 		PrintWriter out = null;
 		//获取权限列表
 		ArrayList<SecurityRole> roles = (ArrayList<SecurityRole>) roleService.selectRoleByToken(token);
@@ -149,7 +149,7 @@ public class AuthorityController{
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
 	
@@ -163,7 +163,7 @@ public class AuthorityController{
 	 * @return
 	 */
 	@RequestMapping("/allocation")
-	public String showAllotRole(int p,ModelMap map){
+	public String showAllotRole(int p,ModelMap map) { 
 		 
 		   String sp = p + "";
 		   if("".equals(sp)){
@@ -203,14 +203,14 @@ public class AuthorityController{
 	 */
 	@RequestMapping("updateRole")
 	@ResponseBody
-	public String updateRole(SecurityRole role){
+	public String updateRole(SecurityRole role) {
 		int r;
 		
 		//更新数据
 		int result = roleService.update(role);
 		if(result>0){
 			r = 1;
-		}else{
+		} else {
 			r = 0;
 		}		
 		
@@ -224,14 +224,14 @@ public class AuthorityController{
 	 */
 	@RequestMapping("/updateUserRole")
 	@ResponseBody
-	public String  updateUserRole(SecurityUserToRole userToRole){
+	public String  updateUserRole(SecurityUserToRole userToRole) {
 		int r;
 		
 		//更新数据
 		int result = userToRoleService.update(userToRole);
-		if(result>0){
+		if(result>0) {
 			r = 1;
-		}else{
+		} else {
 			r = 0;
 		}		
 		
@@ -247,13 +247,13 @@ public class AuthorityController{
 	 */
 	@RequestMapping("/deleteUser")
 	@ResponseBody
-	public String deleteUser(String ids){
+	public String deleteUser(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
 	        Integer[] iid = new Integer[idArray.length];
-	        for(int i = 0; i< iid.length; i++){
+	        for(int i = 0; i< iid.length; i++) {
 	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
@@ -265,7 +265,7 @@ public class AuthorityController{
 	        //执行删除语句
 	        userService.deleteBatch(user);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -277,7 +277,7 @@ public class AuthorityController{
 	 * @return
 	 */
 	@RequestMapping("/resources")
-	public String resources(ModelMap map){
+	public String resources(ModelMap map) {
 		ArrayList<SecurityResources> resources = (ArrayList<SecurityResources>) resourcesService.findAll();
 	
 		map.put("resources", resources);
@@ -290,7 +290,7 @@ public class AuthorityController{
 	 * @param response
 	 */
 	@RequestMapping("/findUserByName")
-	public  void findUserByName(String token,HttpServletResponse response){
+	public  void findUserByName(String token,HttpServletResponse response) {
 		PrintWriter out = null;
 		//获取权限列表
 		ArrayList<SecurityUser> roles = (ArrayList<SecurityUser>)  userService.selectAllUserByToken(token);
@@ -305,7 +305,7 @@ public class AuthorityController{
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
 	}

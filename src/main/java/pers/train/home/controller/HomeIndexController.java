@@ -135,6 +135,7 @@ public class HomeIndexController {
 		map.put("list", list);
 		map.put("type", type);
 		map.put("typeList", typeList);
+		
 		return "home/list";
 	}
 	

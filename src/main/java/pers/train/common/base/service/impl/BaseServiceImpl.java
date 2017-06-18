@@ -42,7 +42,7 @@ import pers.train.common.base.service.BaseService;
  * @param <T>
  */
 @SuppressWarnings({"unused","rawtypes"})
-public class BaseServiceImpl<T> implements BaseService<T>{
+public class BaseServiceImpl<T> implements BaseService<T> {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 	

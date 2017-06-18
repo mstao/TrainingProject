@@ -6,7 +6,8 @@ import java.util.Map;
 import pers.train.admin.po.Article;
 import pers.train.common.base.service.BaseService;
 /**
- * 文章service接口
+ * 文章service接口<p>
+ * 继承自{@link BaseService}
  * @author mingshan
  *
  */

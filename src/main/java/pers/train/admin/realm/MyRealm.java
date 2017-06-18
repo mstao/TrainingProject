@@ -18,8 +18,9 @@ import pers.train.admin.service.UserService;
 
 /**
  * 权限认证和权限分配<p>
+ * 继承自{@link AuthorizingRealm}<p>
  * doGetAuthorizationInfo 这个方法用户为登录成功的用户授予角色和权限
- * doGetAuthenticationInfo 这个方法验证当前的用户的登录名和密码是否合法
+ * doGetAuthenticationInfo 这个方法验证当前的用户的登录名和密码是否合法<p>
  * 密码采用MD5加密，盐值为当前用户的用户名
  * @author mingshan
  *

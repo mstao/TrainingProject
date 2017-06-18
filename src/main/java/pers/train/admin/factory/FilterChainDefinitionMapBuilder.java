@@ -24,7 +24,7 @@ public class FilterChainDefinitionMapBuilder {
 	/** 
      * 由于在FilterChainDefinitionMap 中是需要顺序的，所以我们选择用LinkedHashMap 
      */  
-	public LinkedHashMap<String, String> buildFilterChainDefinitionMap(){
+	public LinkedHashMap<String, String> buildFilterChainDefinitionMap() {
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
 		//获取所有Resource  
         List<SecurityResources> list = resourcesService.findAll();
@@ -36,8 +36,7 @@ public class FilterChainDefinitionMapBuilder {
 	                map.put(resource.getValue(),resource.getPermission());  
 	            } 
         }
-        
-  
+        //默认所有url以  /admin/开始的都要进行拦截
 		map.put("/admin/**", "authc");
 	
 		return map;

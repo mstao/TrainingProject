@@ -71,7 +71,8 @@ public class UserController {
 	 * @param response
 	 */
 	@RequestMapping("/dealLogin")
-	public void dealLogin(String userName,String password,HttpServletRequest request,HttpServletResponse response) {
+	public void dealLogin(String userName,String password,HttpServletRequest request,
+			HttpServletResponse response) {
 		Subject currentUser = SecurityUtils.getSubject();
 		
 		response.setCharacterEncoding("UTF-8");  

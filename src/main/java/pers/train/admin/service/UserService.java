@@ -7,6 +7,12 @@ import java.util.Set;
 import pers.train.admin.po.SecurityUser;
 import pers.train.common.base.service.BaseService;
 
+/**
+ * 用户service 接口<p>
+ * 继承自{@link BaseService}
+ * @author mingshan
+ *
+ */
 @SuppressWarnings("rawtypes")
 public interface UserService extends BaseService<SecurityUser>{
 

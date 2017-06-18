@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50710
+Source Server         : localhost_3306
+Source Server Version : 50716
 Source Host           : localhost:3306
 Source Database       : manage
 
 Target Server Type    : MYSQL
-Target Server Version : 50710
+Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-06-18 17:58:29
+Date: 2017-06-18 20:19:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -96,12 +96,12 @@ CREATE TABLE `ps_security_permission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `permission_name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_security_permission
 -- ----------------------------
-INSERT INTO `ps_security_permission` VALUES ('7', 'student:select');
+INSERT INTO `ps_security_permission` VALUES ('8', 'upload:pic');
 
 -- ----------------------------
 -- Table structure for ps_security_resources
@@ -112,15 +112,18 @@ CREATE TABLE `ps_security_resources` (
   `value` varchar(255) DEFAULT NULL COMMENT 'url',
   `permission` varchar(255) DEFAULT NULL COMMENT 'permission',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_security_resources
 -- ----------------------------
 INSERT INTO `ps_security_resources` VALUES ('34', '/admin/user/**', 'anon');
-INSERT INTO `ps_security_resources` VALUES ('37', '/admin/teacher/findStudentList', 'perms[student:select]');
 INSERT INTO `ps_security_resources` VALUES ('38', '/admin/authority/**', 'roleOrFilter[\"superadmin\"]');
-INSERT INTO `ps_security_resources` VALUES ('39', '//admin/teacher/**', 'roleOrFilter[\"superadmin,teacher\"]');
+INSERT INTO `ps_security_resources` VALUES ('39', '/admin/teacher/**', 'roleOrFilter[\"superadmin\"]');
+INSERT INTO `ps_security_resources` VALUES ('40', '/admin/link/**', 'roleOrFilter[\"superadmin\"]');
+INSERT INTO `ps_security_resources` VALUES ('41', '/admin/category/**', 'roleOrFilter[\"superadmin\"]');
+INSERT INTO `ps_security_resources` VALUES ('42', '/admin/article/**', 'roleOrFilter[\"superadmin\"]');
+INSERT INTO `ps_security_resources` VALUES ('43', '/admin/upload/uploadpic', 'perms[upload:pic]');
 
 -- ----------------------------
 -- Table structure for ps_security_role
@@ -157,13 +160,12 @@ CREATE TABLE `ps_security_role_to_permission` (
   UNIQUE KEY `id` (`id`),
   KEY `idx_sys_security_role_to_resource_role_id` (`role_id`),
   KEY `idx_sys_security_role_to_resource_resource_id` (`permission_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_security_role_to_permission
 -- ----------------------------
-INSERT INTO `ps_security_role_to_permission` VALUES ('7', '7', '1');
-INSERT INTO `ps_security_role_to_permission` VALUES ('8', '7', '3');
+INSERT INTO `ps_security_role_to_permission` VALUES ('9', '8', '1');
 
 -- ----------------------------
 -- Table structure for ps_security_user

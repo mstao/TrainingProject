@@ -91,9 +91,4 @@
 	
 </delete>
 
-<!-- 单项删除 -->
-<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-	delete from ps_article_type where id=#{id}
-</delete>
-
 </mapper>

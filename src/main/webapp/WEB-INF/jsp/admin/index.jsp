@@ -109,6 +109,8 @@
                                                                             后台主页
                         </a>
                     </li>
+                  <%-- 只有超级管理员   有权限 --%>
+	             <shiro:hasAnyRoles name="superadmin">
                     <li class="layui-nav-item">
                         <a href="javascript:;">
                                                                                      权限管理
@@ -186,6 +188,7 @@
                             
                         </dl>
                     </li>
+                    </shiro:hasAnyRoles>
                 </ul>
             </div>
         </div>

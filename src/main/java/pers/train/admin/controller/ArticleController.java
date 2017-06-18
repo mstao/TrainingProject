@@ -149,7 +149,7 @@ public class ArticleController {
 	        //执行删除语句
 	        articleService.deleteBatch(t);
 	        return "1";
-		} catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -168,7 +168,7 @@ public class ArticleController {
 		int result = articleService.update(article);		
 		if(result > 0) {
 			r = "1";
-		} else{
+		} else {
 			r = "0";
 		}
 		

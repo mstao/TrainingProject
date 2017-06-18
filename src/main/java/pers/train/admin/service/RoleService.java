@@ -7,7 +7,8 @@ import pers.train.common.base.service.BaseService;
 
 
 /**
- * 角色
+ * 角色service接口<p>
+ * 继承自{@link BaseService}
  * @author mingshan
  *
  */

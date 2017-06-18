@@ -46,7 +46,7 @@ public class UserServiceImpl extends BaseServiceImpl<SecurityUser> implements Us
 			
 			ArrayList<SecurityPermission> list = (ArrayList<SecurityPermission>) user.getPermission(); 
 			
-			for(SecurityPermission l :list){
+			for(SecurityPermission l :list) {
 				permissions.add(l.getPermissionName());
 			}
 		}

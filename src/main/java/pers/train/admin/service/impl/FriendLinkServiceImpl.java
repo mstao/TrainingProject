@@ -10,6 +10,13 @@ import pers.train.admin.po.FriendLink;
 import pers.train.admin.service.FriendLinkService;
 import pers.train.common.base.service.impl.BaseServiceImpl;
 
+/**
+ * 友情链接service实现类，继承了{@link BaseServiceImpl}基类，
+ * 实现了{@link FriendLinkService}接口
+ * 
+ * @author mingshan
+ *
+ */
 @Service
 public class FriendLinkServiceImpl extends BaseServiceImpl<FriendLink> implements FriendLinkService {
 

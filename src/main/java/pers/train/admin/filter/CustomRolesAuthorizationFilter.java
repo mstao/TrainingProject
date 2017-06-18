@@ -9,7 +9,8 @@ import org.apache.shiro.web.filter.authz.AuthorizationFilter;
 
 /**
  * 
- * Allows access if current user has at least one role of the specified list.
+ * Allows access if current user has at least one role of the specified list.<p>
+ * extends {@link AuthorizationFilter}
  * @author mingshan
  *
  */

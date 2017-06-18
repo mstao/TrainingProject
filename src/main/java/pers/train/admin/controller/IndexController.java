@@ -22,7 +22,7 @@ public class IndexController {
 	 * @return
 	 */
 	@RequestMapping("/index")
-	public String goIndex(ModelMap map){
+	public String goIndex(ModelMap map) {
 	
 		return "admin/index";
 	}
@@ -32,7 +32,7 @@ public class IndexController {
 	 * @return
 	 */
 	@RequestMapping("/welcome")
-	public String goMain(){
+	public String goMain() {
 		return "admin/welcome";
 	}
 	

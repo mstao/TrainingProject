@@ -5,7 +5,8 @@ import java.util.List;
 import pers.train.admin.po.FriendLink;
 import pers.train.common.base.service.BaseService;
 /**
- * 友情链接service 接口
+ * 友情链接service 接口<p>
+ * 继承自{@link BaseService}
  * @author mingshan
  *
  */

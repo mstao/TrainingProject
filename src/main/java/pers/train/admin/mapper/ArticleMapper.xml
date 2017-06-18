@@ -80,13 +80,6 @@
 	
 </select>
 
-<!-- 根据 type id 查询文章 -->
-<!-- <select id="selectArticleByTypeId" parameterType="java.lang.Integer" resultMap="articleResultMap">
-	select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
-	 from ps_article pa,ps_article_type pat where pa.type_id=#{value}
-	
-</select> -->
-
 <!-- 根据id查询 -->
 <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="articleResultMap">
 select pa.id,pa.item_title,pa.item_content,pa.type_id,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
@@ -107,11 +100,6 @@ select pa.id,pa.item_title,pa.item_content,pa.add_time,pa.view_count,pa.author,p
 	<where>
 	   <include refid="query_article_where"></include>
 	</where>
-</delete>
-
-<!-- 单项删除 -->
-<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from ps_article where id=#{id}
 </delete>
 
 <!-- 修改文章 -->

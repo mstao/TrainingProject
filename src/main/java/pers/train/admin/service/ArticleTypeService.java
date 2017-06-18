@@ -5,7 +5,8 @@ import java.util.List;
 import pers.train.admin.po.ArticleType;
 import pers.train.common.base.service.BaseService;
 /**
- * 文章类型 service 接口
+ * 文章类型 service 接口<p>
+ * 继承自{@link BaseService}
  * @author mingshan
  *
  */

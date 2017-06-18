@@ -5,6 +5,7 @@ import pers.train.common.base.service.BaseService;
 
 /**
  * 用户与角色映射接口
+ * 继承自{@link BaseService}
  * @author mingshan
  *
  */

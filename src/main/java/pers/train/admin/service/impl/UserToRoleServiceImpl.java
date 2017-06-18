@@ -8,11 +8,12 @@ import pers.train.common.base.service.impl.BaseServiceImpl;
 
 
 /**
- * 用户角色关联
+ * 用户角色关联,继承了{@link BaseServiceImpl}基类,
+ * 实现了{@link UserToRoleService}接口
  * @author mingshan
  *
  */
 @Service
-public class UserToRoleServiceImpl extends BaseServiceImpl<SecurityUserToRole> implements UserToRoleService{
+public class UserToRoleServiceImpl extends BaseServiceImpl<SecurityUserToRole> implements UserToRoleService {
 
 }

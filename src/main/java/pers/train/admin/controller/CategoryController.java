@@ -39,7 +39,7 @@ public class CategoryController {
 	 * @return
 	 */
 	@RequestMapping("/show")
-	public String show(ModelMap map){
+	public String show(ModelMap map) {
 		//获取栏目信息
 		List<ArticleType> typeList = articleTypeService.findAll();
 		map.put("typeList", typeList);
@@ -51,7 +51,7 @@ public class CategoryController {
 	 * @return
 	 */
 	@RequestMapping("/showAddCategory")
-	public String showAddPage(){
+	public String showAddPage() {
 		return "admin/category/add";
 	}
 	
@@ -92,7 +92,7 @@ public class CategoryController {
 	        //执行删除语句
 	        articleTypeService.deleteBatch(t);
 	        return "1";
-		} catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -110,7 +110,7 @@ public class CategoryController {
 		int result = articleTypeService.update(articleType);		
 		if(result > 0) {
 			r = "1";
-		} else{
+		} else {
 			r = "0";
 		}
 		
@@ -137,7 +137,7 @@ public class CategoryController {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally{
+		} finally {
 			out.close();
 		}
 	}
