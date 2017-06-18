@@ -50,7 +50,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/login")
-	public String showLogin(){
+	public String showLogin() {
 		return "admin/login";
 	}
 	
@@ -59,7 +59,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/unauthorized")
-	public String unauthorized(){
+	public String unauthorized() {
 		return "admin/authority/unauthorized";
 	}
 	
@@ -71,7 +71,7 @@ public class UserController {
 	 * @param response
 	 */
 	@RequestMapping("/dealLogin")
-	public void dealLogin(String userName,String password,HttpServletRequest request,HttpServletResponse response){
+	public void dealLogin(String userName,String password,HttpServletRequest request,HttpServletResponse response) {
 		Subject currentUser = SecurityUtils.getSubject();
 		
 		response.setCharacterEncoding("UTF-8");  
@@ -118,7 +118,7 @@ public class UserController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
 	}
@@ -130,7 +130,7 @@ public class UserController {
 	 */
 	@RequestMapping("/save")
 	@ResponseBody
-	public String saveUser(SecurityUser user){
+	public String saveUser(SecurityUser user) {
 		try{
 			
 		
@@ -155,7 +155,7 @@ public class UserController {
 			userToRoleService.insert(userToRole);
 			
 			return "1";
-		}catch(RuntimeException e){
+		} catch (RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -169,15 +169,15 @@ public class UserController {
 	 */
 	@RequestMapping("/checkUser")
 	@ResponseBody
-	public String checkUser(String userName){
+	public String checkUser(String userName) {
 		SecurityUser user = new SecurityUser();
 		user.setUserName(userName);
 		user = (SecurityUser) userService.selectByUniqueFiled(user);
       
         String result = ""; 
-        if(user == null){
+        if(user == null) {
         	result = "1";
-        }else{
+        } else {
         	result = "0";
         }
 		return result;
@@ -190,15 +190,15 @@ public class UserController {
 	 */
 	@RequestMapping("/checkEmail")
 	@ResponseBody
-	public String checkEmail(String email){
+	public String checkEmail(String email) {
 		SecurityUser user = new SecurityUser();
 		user.setEmail(email);
 		user = (SecurityUser) userService.selectByUniqueFiled(user);
       
         String result = ""; 
-        if(user == null){
+        if(user == null) {
         	result = "1";
-        }else{
+        } else {
         	result = "0";
         }
 		return result;
@@ -207,18 +207,18 @@ public class UserController {
 	
 	
 	/**
-	 * 
-	* @Title: updatwePassword
-	* @Description: TODO 更新密码
-	* @param @param userName
-	* @param @param password
-	* @param @return    设定文件
-	* @return String    返回类型
-	* @throws
+	 * 更新用户信息
+	 * @param uid
+	 * @param userName
+	 * @param email
+	 * @param oldPassword
+	 * @param newPassword
+	 * @return
 	 */
 	@RequestMapping("/update")
 	@ResponseBody
-	public String updatwePassword(int uid,String userName,String email, @RequestParam(required=false) String oldPassword, @RequestParam(required=false) String newPassword){
+	public String updatwePassword(int uid,String userName,String email, 
+			@RequestParam(required=false) String oldPassword, @RequestParam(required=false) String newPassword) {
 		String result = "";
 		SecurityUser user = new SecurityUser();
 		user = (SecurityUser) userService.findById(uid);
@@ -230,7 +230,7 @@ public class UserController {
 		
 		
 		//此时判断一下密码是否为空
-		if("".equals(oldPassword) && "".equals(newPassword)){
+		if("".equals(oldPassword) && "".equals(newPassword)) {
 			//密码为空  不更新密码这一项
 			 user.setUserName(userName);
 			 user.setEmail(email);
@@ -238,11 +238,11 @@ public class UserController {
 			 //将密码置为空 ，不执行更改
 			 user.setPassword("");
 			
-		}else{
+		} else {
 			//需要将传过来的比对的密码进行加密
 			Object object = CrypographyUtil.MD5(oldUsername, oldPassword, oldUsername);
 			String oldMD5Pw = object.toString();
-			if(oldMD5Pw.equals(oldpw)){
+			if(oldMD5Pw.equals(oldpw)) {
 				//此时密码比对正确，进行更改密码和用户名操作
 		
 				 //将密码进行MD5加密保存
@@ -253,7 +253,7 @@ public class UserController {
 				 user.setPassword(MD5Pw);
 				 user.setSalt(userName);
 				
-			}else{
+			} else {
 				result = "0";
 			}	
 		}
@@ -263,7 +263,7 @@ public class UserController {
 			 //执行更新操作
 			 userService.update(user);
 			 return "1";
-		 }catch(RuntimeException e){
+		 } catch (RuntimeException e) {
 			 result = "2";
 		 }
 		return result;
@@ -275,7 +275,7 @@ public class UserController {
 	 */
 	
 	@RequestMapping("/findUserInfo")
-	public void findUserInfo(String userName,HttpServletResponse response){
+	public void findUserInfo(String userName,HttpServletResponse response) {
 		PrintWriter out = null;
 		//获取权限列表
 		SecurityUser user = new SecurityUser();
@@ -292,7 +292,7 @@ public class UserController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
 	}
@@ -302,7 +302,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/logout")
-	public String logout(HttpServletRequest request){
+	public String logout(HttpServletRequest request) {
 		Subject currentUser = SecurityUtils.getSubject();
 		currentUser.logout();
 		//session置为空

@@ -28,9 +28,15 @@
 <!-- 定义sql片段 -->
 <sql id="query_article_where">
     
+    <!-- 是否需要typeId -->
     <if test="typeId !=null and typeId !=0">
 	  and pa.type_id=#{typeId}
 	</if>
+    
+    <!-- 是否需要发布  -->
+    <if test="isPublish !=null and isPublish=0">
+      and pa.is_publish=#{isPublish}
+    </if>
     
     <!-- 用于批量删除 -->
 	<if test="ids !=null and ids!='' ">
@@ -83,7 +89,7 @@
 <!-- 根据id查询 -->
 <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="articleResultMap">
 select pa.id,pa.item_title,pa.item_content,pa.type_id,pa.add_time,pa.view_count,pa.author,pa.is_publish,pat.id at_id,pat.item_type,pat.item_flag
-	 from ps_article pa,ps_article_type pat where pa.id=#{value}
+	 from ps_article pa,ps_article_type pat where pa.type_id=pat.id and  pa.id=#{value}
 	 
 </select>
 

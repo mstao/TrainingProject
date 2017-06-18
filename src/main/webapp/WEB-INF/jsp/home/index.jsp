@@ -31,7 +31,7 @@
             	<ul class="navUI">
             	<li><a href="${CTP}/home/index">首页</a></li>
             	<c:forEach items="${typeList }" var="list">
-                	<li><a href="javascript:void(0);">${list.itemType}</a></li>
+                	<li><a href="${CTP}/home/list?typeId=${list.id}&p=1">${list.itemType}</a></li>
                 </c:forEach>    
                 </ul>
             </div>
@@ -46,8 +46,10 @@
             <div class="clear"></div>
             <div class="box">
             	
-             <c:forEach items="articleList" var="list">
-            	<div class="box_b">
+             <c:forEach items="${articleList}" var="list" varStatus="count">
+              <c:choose>
+	              <c:when test="${count.index <3}">
+	              <div class="box_b">
                 	<div class="title">
                     	<span class="txt_title">${list.itemType}</span>
                         <span class="txt_discipline">作者</span>
@@ -59,21 +61,20 @@
                     	<ul class="discipUI">
                         <c:forEach items="${list.articles}" var="article">
                         	<li>
-                            	<a href="javascript:void(0)" class="txt_title">${myTag:substr(article.itemTitle,0,10,true)}</a><span class="txt_discipline">${article.author }</span><span class="txt_time"><fmt:formatDate value="${article.addTime}" pattern="yyyy-MM-dd"/></span>
+                            	<a href="${CTP}/home/details?id=${article.id}" class="txt_title">${myTag:substr(article.itemTitle,0,10,true)}</a><span class="txt_discipline">${article.author }</span><span class="txt_time"><fmt:formatDate value="${article.addTime}" pattern="yyyy-MM-dd"/></span>
                             </li>
                        </c:forEach>
                           
                         </ul>
                     </div>
                 </div>
-                
-             </c:forEach>	
-             
-            </div>
-            <div class="box">
-            	<div class="box_f">
+	              </c:when>
+	              <c:otherwise>
+	              
+	              <!--S 大于3的情况 -->
+	              <div class="box_f">
                 	<div class="title">
-                    	<span class="txt_title">教育科研</span>
+                    	<span class="txt_title">${list.itemType}</span>
                         <span class="txt_discipline">作者</span>
                         <span class="txt_time">
 	                        	<a href="#">更多>></a>
@@ -81,95 +82,25 @@
                     </div>
                     <div class="cont">
                     	<ul class="discipUI">
+                        	<c:forEach items="${list.articles}" var="article">
                         	<li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
+                            	<a href="javascript:void(0)" class="txt_title">${myTag:substr(article.itemTitle,0,10,true)}</a><span class="txt_discipline">${article.author }</span><span class="txt_time"><fmt:formatDate value="${article.addTime}" pattern="yyyy-MM-dd"/></span>
                             </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
+                            </c:forEach>
+                          
                     
                         </ul>
                     </div>
                 </div>
-                
-                <div class="box_f">
-                	<div class="title">
-                    	<span class="txt_title">智慧课堂</span>
-                        <span class="txt_discipline">作者</span>
-                        <span class="txt_time">
-	                        	<a href="#">更多>></a>
-                        </span>
-                    </div>
-                    <div class="cont">
-                    	<ul class="discipUI">
-                        	<li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                       
-                        </ul>
-                    </div>
-                </div>
-                
-               <div class="box_f">
-                	<div class="title">
-                    	<span class="txt_title">智慧课堂</span>
-                        <span class="txt_discipline">作者</span>
-                        <span class="txt_time">
-	                        	<a href="#">更多>></a>
-                        </span>
-                    </div>
-                    <div class="cont">
-                    	<ul class="discipUI">
-                        	<li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                            <li>
-                            	<a href="javascript:void(0)" class="txt_title">地壳运动的奥秘</a><span class="txt_discipline">张三</span><span class="txt_time">2016-03-20</span>
-                            </li>
-                       
-                        </ul>
-                    </div>
-                </div>
+	              <!--E 大于3的情况 -->
+	              
+	              </c:otherwise>
+              </c:choose>
+                     
+             </c:forEach>	
+             
             </div>
+          
             <div class="link">
             	<div class="linelink">
             		<span>友情链接：</span>

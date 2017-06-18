@@ -20,7 +20,7 @@ public interface ArticleMapper extends BaseMapper<Article> {
     //批量删除
   	int deleteBatch(Article article);
   	
-	//分页查询，传入的map中 key为 position , pageSize
+	//分页查询，传入的map中 key为 typeId,  position , pageSize
   	List<Article> selectArticleList(Map map);
   	
   	//根据typeId获取记录量，传入 实体类

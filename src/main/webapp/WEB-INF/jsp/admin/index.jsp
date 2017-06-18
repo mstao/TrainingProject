@@ -69,7 +69,7 @@
                 <!-- 水平导航 -->
                 <ul class="layui-nav" style="position: absolute; top: 0; right: 0; background: none;">
                     <li class="layui-nav-item">
-                        <a href="${CTP}/home/index">
+                        <a href="${CTP}/home/index" target="_blank">
                          	   进入前台
                         </a>
                     </li>
