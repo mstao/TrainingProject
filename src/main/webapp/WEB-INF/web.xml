@@ -44,7 +44,6 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
  
-  
   <!-- shiroFilter配置 -->
   <filter>
       <filter-name>shiroFilter</filter-name>
@@ -59,7 +58,7 @@
       <filter-name>shiroFilter</filter-name>
       <url-pattern>/admin/*</url-pattern>
   </filter-mapping>
-  
+
   <listener>
     <listener-class>
      org.springframework.web.util.IntrospectorCleanupListener

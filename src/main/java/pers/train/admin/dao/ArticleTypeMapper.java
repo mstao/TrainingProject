@@ -20,5 +20,5 @@ public interface ArticleTypeMapper extends BaseMapper<ArticleType>{
 	int deleteBatch(ArticleType articleType); 
 	
 	//前台首页加载文章信息
-	List<ArticleType> selectSimpleArticleListByType();
+	List<ArticleType> selectSimpleArticleListByType(int size);
 }

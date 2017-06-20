@@ -101,6 +101,8 @@ public class UserController {
         		//将用户信息保存到session 中
                 session.setAttribute("role", role);
                 session.setAttribute("uid", uid);
+                //设置session失效时间为一星期
+                session.setMaxInactiveInterval(60*60*24*7);
             } 
             // 所有认证时异常的父类. 
             catch (AuthenticationException ae) {

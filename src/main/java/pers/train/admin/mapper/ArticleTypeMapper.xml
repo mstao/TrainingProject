@@ -52,9 +52,36 @@
 </select>
 
 <!-- 前台首页信息加载 -->
-<select id="selectSimpleArticleListByType" resultMap="typeResultMap">
-	select pat.id,pat.item_type,pat.item_flag,pa.id article_id,pa.item_title,pa.author,pa.add_time,pa.is_publish,pa.type_id from ps_article_type pat 
-	LEFT JOIN  ps_article pa ON pa.type_id=pat.id and pa.is_publish=1 order by pa.add_time desc
+<select id="selectSimpleArticleListByType" parameterType="java.lang.Integer" resultMap="typeResultMap">
+<!-- 	select pat.id,pat.item_type,pat.item_flag,pa.id article_id,pa.item_title,pa.author,pa.add_time,pa.is_publish,pa.type_id from ps_article_type pat 
+	LEFT JOIN  ps_article pa ON pa.type_id=pat.id and pa.is_publish=1 order by pa.add_time desc -->
+SELECT
+	pat.id,
+	pat.item_type,
+	pat.item_flag,
+	pa.id article_id,
+	pa.item_title,
+	pa.author,
+	pa.add_time,
+	pa.is_publish,
+	pa.type_id
+FROM
+	ps_article_type pat
+
+LEFT JOIN(
+SELECT 
+  pa.id,
+	pa.item_title,
+	pa.author,
+	pa.add_time,
+	pa.is_publish,
+	pa.type_id
+ FROM ps_article pa 
+ WHERE #{value} &gt;(select count(*) from ps_article WHERE type_id=pa.type_id and id &gt;pa.id )
+ ORDER BY pa.add_time desc
+)pa ON pa.type_id = pat.id
+AND pa.is_publish = 1
+ORDER BY pa.add_time DESC
 </select>
 
 <!-- 修改栏目名称 -->

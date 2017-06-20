@@ -92,8 +92,8 @@ $(function(){
 		
 					 if(data>0){
 						layer.msg('添加成功', {icon: 1,time:2000});
-						window.close();
-						window.location.href=CTPPATH+"/admin/link/show";
+			
+					  
 
 					}else{
 						layer.msg("添加出错了", {icon: 2,time:2000});

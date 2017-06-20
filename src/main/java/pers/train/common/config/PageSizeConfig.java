@@ -11,4 +11,7 @@ public class PageSizeConfig {
 	
 	/*******后台页面********/
 	public static final int ADMIN_PAGE_SIZE = 10;
+	
+	/********首页每个栏目中文章的显示数量*******/
+	public static final int HOME_CATEGORY_ARTICLE_SIZE = 5; 
 }

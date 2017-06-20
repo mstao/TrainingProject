@@ -35,9 +35,9 @@ public class ArticleTypeServiceImpl extends BaseServiceImpl<ArticleType> impleme
 	}
 
 	@Override
-	public List<ArticleType> selectSimpleArticleListByType() {
+	public List<ArticleType> selectSimpleArticleListByType(int size) {
 
-		return articleTypeMapper.selectSimpleArticleListByType();
+		return articleTypeMapper.selectSimpleArticleListByType(size);
 	}
 
 

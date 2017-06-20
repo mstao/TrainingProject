@@ -78,7 +78,7 @@ var DEFAULT_USERNAME = "<shiro:principal/>";
 				
 				<td data-id="${list.id}"> <input type="checkbox" name="info_id" value="${list.id}"></td>
 				<td>${myTag:substr(list.itemTitle,0,20,true)}</td>
-				<td>${myTag:substr(list.itemContent,0,32,true)}</td>
+				<td>${myTag:substr(list.itemContent,0,20,true)}</td>
 				<td>${list.author}</td>
 				<td>${list.articleType.itemType}</td>
 				<td><fmt:formatDate value="${list.addTime}" pattern="yyyy-MM-dd"/></td>

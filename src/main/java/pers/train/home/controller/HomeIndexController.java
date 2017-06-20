@@ -21,7 +21,7 @@ import pers.train.common.base.service.PageHelperService;
 import pers.train.common.config.PageSizeConfig;
 
 /**
- * 主页控制器
+ * 前台主页控制器
  * @author mingshan
  *
  */
@@ -45,14 +45,16 @@ public class HomeIndexController {
 	
 	private int pageSize = PageSizeConfig.HOME_PAGE_SIZE;
 	
+	private int articleSize = PageSizeConfig.HOME_CATEGORY_ARTICLE_SIZE;
+	
 	@RequestMapping("/index")
 	public String goIndex(ModelMap map) {
 		
 		//获取栏目信息
 		List<ArticleType> typeList = articleTypeService.findAll();
 		
-		//获取简单文章信息
-		List<ArticleType> articleList = articleTypeService.selectSimpleArticleListByType();
+		//获取简单文章信息,这里的参数是 首页每个栏目显示的文章的数量
+		List<ArticleType> articleList = articleTypeService.selectSimpleArticleListByType(articleSize);
 		
 		//获取友情链接
 		List<FriendLink> link = friendLinkService.findAll();

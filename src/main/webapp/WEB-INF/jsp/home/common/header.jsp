@@ -20,7 +20,9 @@
 	                </c:forEach> 
                 </ul>
             </div>
-            
+            <div class="banner">
+            	<div class="banimg"><img src="${CTP}/resources/home/theme/1/images/front/banner.png"></div>
+            </div>
         </div>
     </div>
     

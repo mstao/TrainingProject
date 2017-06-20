@@ -38,12 +38,12 @@
                     <div class="cont">
                     	<ul class="discipUI">
                         <c:forEach items="${list.articles}" var="article" varStatus="c">
-                        	<c:if test="${c.index lt 5}">
+                        	
                         	
 	                        	<li>
 	                            	<a href="${CTP}/home/details?id=${article.id}" class="txt_title">${myTag:substr(article.itemTitle,0,10,true)}</a><span class="txt_discipline">${article.author }</span><span class="txt_time"><fmt:formatDate value="${article.addTime}" pattern="yyyy-MM-dd"/></span>
 	                            </li>
-                            </c:if>
+                            
                        </c:forEach>
                           
                         </ul>
@@ -65,11 +65,11 @@
                     <div class="cont">
                     	<ul class="discipUI">
                         	<c:forEach items="${list.articles}" var="article" varStatus="c">
-	                        	<c:if test="${c.index lt 5}">
+	                        	
 		                        	<li>
 		                            	<a href="${CTP}/home/details?id=${article.id}" class="txt_title">${myTag:substr(article.itemTitle,0,10,true)}</a><span class="txt_discipline">${article.author }</span><span class="txt_time"><fmt:formatDate value="${article.addTime}" pattern="yyyy-MM-dd"/></span>
 		                            </li>
-	                            </c:if>
+	                          
                             </c:forEach>
                           
                     
