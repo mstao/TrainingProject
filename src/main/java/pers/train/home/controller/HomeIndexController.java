@@ -110,6 +110,7 @@ public class HomeIndexController {
 	    int iTypeId = Integer.parseInt(typeId);
 
     	umap.put("typeId", iTypeId);
+    	umap.put("isPublish", isPublish);
     	article.setTypeId(iTypeId);
     	article.setIsPublish(isPublish);
     	

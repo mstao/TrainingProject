@@ -34,7 +34,7 @@
 	</if>
     
     <!-- 是否需要发布  -->
-    <if test="isPublish !=null ">
+    <if test="isPublish !=null and isPublish!=0">
       and pa.is_publish=#{isPublish}
     </if>
     
