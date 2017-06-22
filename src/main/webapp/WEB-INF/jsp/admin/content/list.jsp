@@ -342,8 +342,8 @@ layui.use(['layer','element','form'], function() {
 			        			
 			        			xhtml+="<tr><td data-id='"+item.id+"'> <input type='checkbox' name='info_id' value="+item.id+"></td>"
 			        			+"<td>"+sub(item.itemTitle,20)+"</td><td>"+sub(item.itemContent,32)+"</td>"
-			        			+"<td>"+item.itemType+"</td><td>"+item.itemFlag+"</td>"
-			        			+"<td>"+item.author+"</td><td>"+showLocale(item.addTime)+"</td>";
+			        			+"<td>"+item.author+"</td>"
+			        			+"<td>"+item.articleType.itemType+"</td><td>"+showLocale(item.addTime)+"</td>";
 			        			
 			        			if(item.isPublish == 1){
 			        				xhtml+="<td>已发布</td>";
@@ -354,7 +354,7 @@ layui.use(['layer','element','form'], function() {
 			        				
 			        			
 			        			xhtml+="<td>"+item.viewCount+"</td>"
-			        				 +"<span class='table-operation update-category-btn' title='编辑'><i class='layui-icon'>&#xe642;</i>   </span><span class='table-operation user-update only-delete' dx-type='update' title='删除'><i class='layui-icon'>&#xe640;</i></span> ";
+			        				 +"<td class='table-operation-box'><span class='table-operation update-article-btn' data-id='"+item.id+"' title='编辑'><i class='layui-icon'>&#xe642;</i>   </span><span class='table-operation user-update only-delete' dx-type='update' title='删除'><i class='layui-icon'>&#xe640;</i></span></td> ";
 			        		   
 			        		}); 
 			        	
@@ -366,7 +366,7 @@ layui.use(['layer','element','form'], function() {
 			        
 			        xhtml+="</tbody>";
 			        $(".article-table").html(xhtml);
-						
+			        $(".pager").hide();
 				},
 				error:function(){
 
@@ -386,7 +386,7 @@ layui.use(['layer','element','form'], function() {
 	
     
 	//修改跳转
-	$(".update-article-btn").bind("click",function(){
+	$(document).on("click",".update-article-btn",function(){
 		var id = $(this).attr("data-id");
 		window.location.href=CTPPATH+"/admin/article/showUpdate?id="+id;
 	});

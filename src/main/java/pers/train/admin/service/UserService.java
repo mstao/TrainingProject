@@ -36,4 +36,5 @@ public interface UserService extends BaseService<SecurityUser>{
   	
     /**模糊查询所有用户**/
   	List<SecurityUser> selectAllUserByToken(String token);
+  	
 }

@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50716
+Source Server         : localhost
+Source Server Version : 50710
 Source Host           : localhost:3306
 Source Database       : manage
 
 Target Server Type    : MYSQL
-Target Server Version : 50716
+Target Server Version : 50710
 File Encoding         : 65001
 
-Date: 2017-06-18 20:19:28
+Date: 2017-06-22 08:07:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,7 +45,7 @@ INSERT INTO `ps_article` VALUES ('33', '恶气企鹅企鹅请问', '<p>请问委
 INSERT INTO `ps_article` VALUES ('34', '请问恶气恶气恶气恶气', '<p>请问去<br></p>', '1', '2017-06-18 15:28:47', '0', '1', '啊啊');
 INSERT INTO `ps_article` VALUES ('35', 'e请问发顺丰到付是', '<p>请问去恶趣味企鹅<br></p>', '1', '2017-06-18 15:28:53', '0', '1', '啊啊');
 INSERT INTO `ps_article` VALUES ('36', 'e驱蚊器恶趣味驱蚊器恶气', '<p>请问q<br></p>', '1', '2017-06-18 15:29:05', '0', '1', '啊啊');
-INSERT INTO `ps_article` VALUES ('37', '恶趣味驱蚊器饿q', '<p>请问q额请问去<br></p>', '1', '2017-06-18 15:29:19', '5', '1', '啊啊');
+INSERT INTO `ps_article` VALUES ('37', '2222222', '<p>请问q额请问去<br></p><p></p><p><img src=\"/TrainingProject/resources/Uploads/images/4481817b-b069-4b4f-8bb5-9d9ad25bb0a2.png\" alt=\"2017-04-19_130552\" style=\"max-width:100%;\"></p><p><br></p>', '1', '2017-06-19 07:59:00', '9', '1', '啊啊');
 
 -- ----------------------------
 -- Table structure for ps_article_type
@@ -81,12 +81,15 @@ CREATE TABLE `ps_friend_link` (
   `link_name` varchar(20) DEFAULT NULL,
   `link_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_friend_link
 -- ----------------------------
 INSERT INTO `ps_friend_link` VALUES ('1', '222', 'www.baidu.com');
+INSERT INTO `ps_friend_link` VALUES ('2', '网易', 'www.163.com');
+INSERT INTO `ps_friend_link` VALUES ('3', '淘宝', 'www.taobao.com');
+INSERT INTO `ps_friend_link` VALUES ('4', '天猫', 'www.tmall.com');
 
 -- ----------------------------
 -- Table structure for ps_security_permission
@@ -185,9 +188,8 @@ CREATE TABLE `ps_security_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `idx_sys_security_username` (`username`) USING BTREE,
-  UNIQUE KEY `idx_sys_security_email` (`email`) USING BTREE,
-  UNIQUE KEY `idx_sys_security_number` (`number`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `idx_sys_security_email` (`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_security_user
@@ -195,6 +197,7 @@ CREATE TABLE `ps_security_user` (
 INSERT INTO `ps_security_user` VALUES ('2', 'mingshan', '5f9d2c655e00de34e468083421a4d4ef', 'mingshan', '1', '715604127@qq.com', '345', '2017-04-22 00:00:00', null, null);
 INSERT INTO `ps_security_user` VALUES ('3', 'admin', '038bdaf98f2037b31f1e75b5b4c9b26e', 'admin', '1', '499445428@qq.com', '2233', '2017-04-22 00:00:00', null, null);
 INSERT INTO `ps_security_user` VALUES ('21', 'wwww', 'f9c67f2d435360ce6b67791fba882b28', 'wwww', '1', '123313123@qq.com', null, '2017-05-22 19:35:29', null, null);
+INSERT INTO `ps_security_user` VALUES ('22', 'hhhhh', '59e8290b71d5153b6b30ba987344cccc', 'hhhhh', '1', 'sadadad@qq.com', null, '2017-06-21 18:26:35', null, null);
 
 -- ----------------------------
 -- Table structure for ps_security_user_to_role
@@ -208,7 +211,7 @@ CREATE TABLE `ps_security_user_to_role` (
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `sys_security_user_to_role_user_id` (`user_id`) USING BTREE,
   KEY `sys_security_user_to_role_role_id` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_security_user_to_role
@@ -218,4 +221,3 @@ INSERT INTO `ps_security_user_to_role` VALUES ('9', '1', '3');
 INSERT INTO `ps_security_user_to_role` VALUES ('12', '2', '20');
 INSERT INTO `ps_security_user_to_role` VALUES ('13', '8', '21');
 INSERT INTO `ps_security_user_to_role` VALUES ('14', '8', '22');
-INSERT INTO `ps_security_user_to_role` VALUES ('15', '2', '23');

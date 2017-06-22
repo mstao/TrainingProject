@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import pers.train.admin.dao.SecurityUserMapper;
 import pers.train.admin.po.SecurityPermission;
 import pers.train.admin.po.SecurityUser;
+import pers.train.admin.po.SecurityUserToRole;
 import pers.train.admin.service.UserService;
 import pers.train.common.base.service.impl.BaseServiceImpl;
 
@@ -53,6 +54,7 @@ public class UserServiceImpl extends BaseServiceImpl<SecurityUser> implements Us
 		return permissions;
 	}
 
+	
 	@Override
 	public List<SecurityUser> selectUserByToken(String username) {
 
@@ -83,5 +85,5 @@ public class UserServiceImpl extends BaseServiceImpl<SecurityUser> implements Us
 
 		return securityUserMapper.selectAllUserByToken(token);
 	}
-
+   
 }
