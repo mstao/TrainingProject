@@ -34,7 +34,7 @@
 	</if>
     
     <!-- 是否需要发布  -->
-    <if test="isPublish !=null and isPublish=0">
+    <if test="isPublish !=null ">
       and pa.is_publish=#{isPublish}
     </if>
     
@@ -55,7 +55,7 @@
 	
 	<!-- 判断查询是否需要 typeId条件 -->
 	<where>
-	     pa.type_id=pat.id
+	     pa.type_id=pat.id 
 	 	<include refid="query_article_where"></include>
 	</where>
 	order by pa.add_time desc

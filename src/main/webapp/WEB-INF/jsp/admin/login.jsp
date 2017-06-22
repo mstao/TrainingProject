@@ -152,7 +152,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 		//校检用户名
 		//检验不能为空和数字
 	 function checkUserName(className,tips){
-	 	    var filter=/^[a-zA-Z\u4e00-\u9fa5]{1}[a-zA-Z0-9_\u4e00-\u9fa5]{1,8}$/;
+	 	    var filter=/^[a-zA-Z\u4e00-\u9fa5]{1}[a-zA-Z0-9_\u4e00-\u9fa5]{1,15}$/;
 		    var str = $(className).val();
 			str = str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
 	     	if( str ==""|| str==null ){
@@ -160,10 +160,10 @@ var CTPPATH="${pageContext.request.contextPath}";
 			    $(className).focus();
 				return false;
 			}else{
-				if(filter.test(str) && str.length <9){
+				if(filter.test(str) && str.length <16){
 					return true;
 				}else {
-					layer.tips("*"+tips+"不能为数字",$(className));
+					layer.tips("*"+tips+"不超过15位，用户名首字不为数字",$(className));
 					return false;
 					
 				}
@@ -299,7 +299,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 	    $(".g_username").bind("blur",function(){
 	    	
 	    	var mythis=$(this);
-	    	var filter=/^[a-zA-Z\u4e00-\u9fa5]{1}[a-zA-Z0-9_\u4e00-\u9fa5]{1,8}$/;
+	    	var filter=/^[a-zA-Z\u4e00-\u9fa5]{1}[a-zA-Z0-9_\u4e00-\u9fa5]{1,15}$/;
 	    	var str = mythis.val();
 			str = str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
 			
@@ -353,7 +353,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 					
 					//end
 				}else{
-					layer.tips('*用户名为2-9字符,首字不为数字,无特殊字符 !', mythis);
+					layer.tips('*用户名为1-15字符,首字不为数字,无特殊字符 !', mythis);
 					mythis.focus();
 					ok_username=false;
 				}
