@@ -32,7 +32,7 @@
                     	<span class="txt_title">${list.itemType}</span>
                         <span class="txt_discipline">作者</span>
                         <span class="txt_time">
-	                        	<a href="#">更多>></a>
+	                        	<a href="${CTP}/home/list?typeId=${list.id}&p=1">更多>></a>
                         </span>
                     </div>
                     <div class="cont">
@@ -59,7 +59,7 @@
                     	<span class="txt_title">${list.itemType}</span>
                         <span class="txt_discipline">作者</span>
                         <span class="txt_time">
-	                        	<a href="#">更多>></a>
+	                        	<a href="${CTP}/home/list?typeId=${list.id}&p=1">更多>></a>
                         </span>
                     </div>
                     <div class="cont">
